@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bed, Car, Compass, Calendar, MapPin, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Bed, Car, Compass, Calendar, MapPin, CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
 
 export default function TripHubOverview({ trip }) {
   if (!trip) return null;
@@ -7,7 +7,6 @@ export default function TripHubOverview({ trip }) {
   const currency = trip.user_preferences?.currency || '₹';
   const hotelName = trip.user_preferences?.hotel_name || 'Central Hotel';
   
-  // Calculate total transport metrics
   let totalDistanceKm = 0;
   let totalTransitMins = 0;
   let totalTransitCost = 0;
@@ -34,87 +33,90 @@ export default function TripHubOverview({ trip }) {
   });
 
   return (
-    <div className="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl mb-6">
+    <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
       {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-800">
-        <div>
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-sky-500/10 text-sky-400">
-              <Compass className="w-5 h-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-100">Trip Management Hub</h3>
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2 rounded-xl bg-sky-50 text-sky-600 border border-sky-100">
+            <Compass className="w-4 h-4" />
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-slate-900 tracking-tight">Trip Management Hub</h3>
+            <p className="text-xs text-slate-500">Consolidated overview of bookings, transit logistics, and activities</p>
           </div>
         </div>
-        <span className="text-xs px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300 font-mono flex items-center gap-1.5">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> All Bookings Synchronized
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold flex items-center gap-1.5 shadow-2xs">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Bookings Synchronized
+          </span>
+        </div>
       </div>
 
-      {/* 3 Unified Tracking Pillars */}
+      {/* 3 Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* 1. Accommodation */}
-        <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
-              <Bed className="w-4 h-4 text-indigo-400" /> Accommodation
+        <div className="bg-slate-50/70 border border-slate-200 rounded-xl p-4.5 hover:bg-white hover:border-slate-300 hover:shadow-md transition-all">
+          <div className="flex items-center justify-between mb-2.5">
+            <span className="text-xs font-bold text-slate-600 flex items-center gap-1.5">
+              <Bed className="w-4 h-4 text-indigo-600" /> Accommodation
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 font-semibold">
-              Base HQ
+            <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-bold border border-indigo-200">
+              HQ Base
             </span>
           </div>
-          <div className="text-sm font-bold text-slate-100">{hotelName}</div>
-          <div className="text-xs text-slate-400 mt-1 flex items-center gap-1">
-            <MapPin className="w-3.5 h-3.5 text-slate-500" /> {trip.destination} Center
+          <div className="text-base font-bold text-slate-900 tracking-tight truncate">{hotelName}</div>
+          <div className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+            <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" /> {trip.destination} Center
           </div>
-          <div className="mt-3 pt-3 border-t border-slate-800/60 text-xs text-slate-300 flex justify-between">
-            <span>Duration:</span>
-            <strong className="text-slate-100">{trip.days.length} Nights</strong>
+          <div className="mt-3.5 pt-3 border-t border-slate-200/80 text-xs text-slate-600 flex justify-between items-center">
+            <span>Total Stay:</span>
+            <span className="font-bold text-slate-900">{trip.days.length} Nights</span>
           </div>
         </div>
 
         {/* 2. Transportation */}
-        <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
-              <Car className="w-4 h-4 text-sky-400" /> Transportation
+        <div className="bg-slate-50/70 border border-slate-200 rounded-xl p-4.5 hover:bg-white hover:border-slate-300 hover:shadow-md transition-all">
+          <div className="flex items-center justify-between mb-2.5">
+            <span className="text-xs font-bold text-slate-600 flex items-center gap-1.5">
+              <Car className="w-4 h-4 text-sky-600" /> Transit Logistics
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-300 font-semibold capitalize">
-              {Array.from(transportModes).join(', ') || 'Taxi / Metro'}
+            <span className="text-[10px] px-2 py-0.5 rounded bg-sky-50 text-sky-700 font-bold border border-sky-200 capitalize">
+              {Array.from(transportModes).join(', ') || 'Metro / Cab'}
             </span>
           </div>
-          <div className="text-sm font-bold text-slate-100">
-            {Math.round(totalDistanceKm * 10) / 10} km Total Distance
+          <div className="text-base font-bold text-slate-900 tracking-tight">
+            {Math.round(totalDistanceKm * 10) / 10} km Total Route
           </div>
-          <div className="text-xs text-slate-400 mt-1">
-            ~{totalTransitMins} mins total transit time
+          <div className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" /> ~{totalTransitMins} mins estimated transit
           </div>
-          <div className="mt-3 pt-3 border-t border-slate-800/60 text-xs text-slate-300 flex justify-between">
-            <span>Transit Budget:</span>
-            <strong className="text-sky-400">{currency}{totalTransitCost}</strong>
+          <div className="mt-3.5 pt-3 border-t border-slate-200/80 text-xs text-slate-600 flex justify-between items-center">
+            <span>Transit Cost:</span>
+            <span className="font-bold text-sky-700">{currency}{totalTransitCost}</span>
           </div>
         </div>
 
         {/* 3. Activities */}
-        <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-emerald-400" /> Activities
+        <div className="bg-slate-50/70 border border-slate-200 rounded-xl p-4.5 hover:bg-white hover:border-slate-300 hover:shadow-md transition-all">
+          <div className="flex items-center justify-between mb-2.5">
+            <span className="text-xs font-bold text-slate-600 flex items-center gap-1.5">
+              <Calendar className="w-4 h-4 text-emerald-600" /> Planned Stops
             </span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 font-semibold">
-              {totalActivities} Scheduled
+            <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
+              {totalActivities} Total
             </span>
           </div>
-          <div className="text-sm font-bold text-slate-100">
-            {indoorCount} Indoor / {outdoorCount} Outdoor
+          <div className="text-base font-bold text-slate-900 tracking-tight">
+            {indoorCount} Indoor • {outdoorCount} Outdoor
           </div>
-          <div className="text-xs text-slate-400 mt-1">
-            Day-by-day smart schedule
+          <div className="text-xs text-slate-500 mt-1">
+            Optimized for {trip.user_preferences?.travel_style || 'Balanced'} pace
           </div>
-          <div className="mt-3 pt-3 border-t border-slate-800/60 text-xs text-slate-300 flex justify-between">
-            <span>Status:</span>
-            <strong className="text-emerald-400 flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" /> {trip.health_status}
-            </strong>
+          <div className="mt-3.5 pt-3 border-t border-slate-200/80 text-xs text-slate-600 flex justify-between items-center">
+            <span>Itinerary State:</span>
+            <span className="font-bold text-emerald-700 flex items-center gap-1">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> {trip.health_status}
+            </span>
           </div>
         </div>
       </div>

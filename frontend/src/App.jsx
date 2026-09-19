@@ -16,21 +16,26 @@ export default function App() {
   const [agentResponse, setAgentResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [lastChatResponse, setLastChatResponse] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleCreateTrip = async (prefs) => {
     setLoading(true);
+    setErrorMessage(null);
     try {
       const res = await fetch(`${API_BASE}/trips/plan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(prefs)
       });
+      if (!res.ok) {
+        throw new Error(`Server returned ${res.status}: ${res.statusText}`);
+      }
       const data = await res.json();
       setAgentResponse(data);
       setActiveTrip(data.updated_trip);
     } catch (err) {
       console.error('Failed to create trip plan:', err);
-      alert('Error communicating with TravelPilot FastAPI backend.');
+      setErrorMessage('Could not connect to the TravelPilot AI Backend. Please ensure python backend/main.py is active.');
     } finally {
       setLoading(false);
     }
@@ -90,48 +95,61 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen text-slate-900 flex flex-col font-sans selection:bg-sky-500 selection:text-white">
       <Navbar
         healthStatus={activeTrip ? activeTrip.health_status : 'Ready'}
         activeTrip={activeTrip}
         onReset={() => {
           setActiveTrip(null);
           setAgentResponse(null);
+          setErrorMessage(null);
         }}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {errorMessage && (
+          <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center justify-between shadow-sm">
+            <span>{errorMessage}</span>
+            <button
+              onClick={() => setErrorMessage(null)}
+              className="text-rose-600 hover:text-rose-800 underline font-semibold ml-4 cursor-pointer"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+
         {!activeTrip ? (
           <TripForm onSubmit={handleCreateTrip} loading={loading} />
         ) : (
           <div className="space-y-6">
-            {/* Agent Reasoning Diagnostic Bar */}
+            {/* Agent Reasoning Diagnostic Trace */}
             <AgentThoughtLog agentResponse={agentResponse} />
 
-            {/* Disruption Simulator Bar */}
+            {/* Disruption Simulator Console */}
             <DisruptionSimulator
               onDisrupt={handleDisrupt}
               onOptimize={handleOptimize}
               loading={loading}
             />
 
-            {/* Trip Hub */}
+            {/* Trip Management Hub */}
             <TripHubOverview trip={activeTrip} />
 
-            {/* Budget Analytics */}
+            {/* Budget & Spend Analytics */}
             <BudgetOverview trip={activeTrip} />
 
             {/* Main Content Grid: Timeline + Map */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               <div className="lg:col-span-7">
                 <ItineraryTimeline trip={activeTrip} />
               </div>
-              <div className="lg:col-span-5 space-y-6">
+              <div className="lg:col-span-5 sticky top-20">
                 <InteractiveMap trip={activeTrip} />
               </div>
             </div>
 
-            {/* Floating Chat Drawer */}
+            {/* Floating AI Copilot Drawer */}
             <AIChatDrawer
               tripId={activeTrip.id}
               onChatSubmit={handleChatSubmit}
@@ -140,6 +158,14 @@ export default function App() {
           </div>
         )}
       </main>
+
+      {/* Clean Light Footer */}
+      <footer className="border-t border-slate-200 bg-white/60 py-6 text-center text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span className="font-medium text-slate-600">TravelPilot • Autonomous Multi-Agent AI Travel Engine</span>
+          <span>FastAPI • React 19 • Leaflet • Tailwind</span>
+        </div>
+      </footer>
     </div>
   );
 }

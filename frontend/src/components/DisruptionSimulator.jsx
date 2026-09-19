@@ -1,77 +1,105 @@
 import React from 'react';
-import { CloudRain, AlertOctagon, DollarSign, Zap, ShieldAlert, Sparkles } from 'lucide-react';
+import { CloudRain, AlertOctagon, DollarSign, Zap, Activity, RefreshCw } from 'lucide-react';
 
 export default function DisruptionSimulator({ onDisrupt, onOptimize, loading }) {
+  const actions = [
+    {
+      id: 'WEATHER_RAIN',
+      type: 'disrupt',
+      label: 'Torrential Rainstorm',
+      badge: 'Weather Monitor',
+      badgeColor: 'text-amber-800 bg-amber-50 border-amber-200',
+      description: 'Swaps outdoor sites with indoor venues',
+      icon: CloudRain,
+      iconColor: 'text-amber-600'
+    },
+    {
+      id: 'VENUE_CLOSED',
+      type: 'disrupt',
+      label: 'Sudden Venue Closure',
+      badge: 'Replanner Agent',
+      badgeColor: 'text-rose-800 bg-rose-50 border-rose-200',
+      description: 'Replaces closed venue with nearest open alternative',
+      icon: AlertOctagon,
+      iconColor: 'text-rose-600'
+    },
+    {
+      id: 'BUDGET_CUT',
+      type: 'disrupt',
+      label: 'Simulate Budget Cut',
+      badge: 'Cost Optimizer',
+      badgeColor: 'text-emerald-800 bg-emerald-50 border-emerald-200',
+      description: 'Prunes premium costs to fit tight budget',
+      icon: DollarSign,
+      iconColor: 'text-emerald-600'
+    },
+    {
+      id: 'OPTIMIZE_ROUTES',
+      type: 'optimize',
+      label: 'Optimize Transit Routes',
+      badge: 'Routing Agent',
+      badgeColor: 'text-sky-800 bg-sky-50 border-sky-200',
+      description: 'Re-orders stops to minimize travel duration',
+      icon: Zap,
+      iconColor: 'text-sky-600'
+    }
+  ];
+
   return (
-    <div className="glass-card rounded-2xl p-5 border border-rose-500/20 shadow-xl mb-6 bg-slate-900/60">
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-lg bg-rose-500/10 text-rose-400">
-            <ShieldAlert className="w-5 h-5 animate-pulse" />
+    <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+      {/* Header */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2 rounded-xl bg-sky-50 text-sky-600 border border-sky-100">
+            <Activity className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-100 flex items-center gap-1.5">
-              Live AI Disruption & Replanning Simulator
+            <h3 className="text-sm font-bold text-slate-900 tracking-tight flex items-center gap-2">
+              Autonomous Agent Simulation & Stress-Test Console
             </h3>
-            <p className="text-xs text-slate-400">
-              Trigger real-world events to evaluate autonomous multi-agent adaptation in real-time.
+            <p className="text-xs text-slate-500">
+              Trigger real-world disruption events to observe live multi-agent recovery & replanning.
             </p>
           </div>
         </div>
+        {loading && (
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold">
+            <RefreshCw className="w-3 h-3 animate-spin text-sky-600" />
+            <span>Agent Re-evaluating...</span>
+          </div>
+        )}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <button
-          onClick={() => onDisrupt('WEATHER_RAIN')}
-          disabled={loading}
-          className="p-3.5 rounded-xl bg-slate-950 border border-amber-500/30 hover:border-amber-500 text-left transition flex flex-col justify-between group"
-        >
-          <div className="flex items-center justify-between mb-2">
-            <CloudRain className="w-5 h-5 text-amber-400 group-hover:scale-110 transition" />
-            <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 font-semibold">Monitor</span>
-          </div>
-          <span className="text-xs font-bold text-slate-200">Simulate Torrential Rain</span>
-          <span className="text-[10px] text-slate-400 mt-1">Replaces outdoor stops with indoor places</span>
-        </button>
-
-        <button
-          onClick={() => onDisrupt('VENUE_CLOSED')}
-          disabled={loading}
-          className="p-3.5 rounded-xl bg-slate-950 border border-rose-500/30 hover:border-rose-500 text-left transition flex flex-col justify-between group"
-        >
-          <div className="flex items-center justify-between mb-2">
-            <AlertOctagon className="w-5 h-5 text-rose-400 group-hover:scale-110 transition" />
-            <span className="text-[10px] px-2 py-0.5 rounded bg-rose-500/10 text-rose-300 font-semibold">Replanner</span>
-          </div>
-          <span className="text-xs font-bold text-slate-200">Simulate Venue Closure</span>
-          <span className="text-[10px] text-slate-400 mt-1">Swaps closed attraction with nearby spot</span>
-        </button>
-
-        <button
-          onClick={() => onDisrupt('BUDGET_CUT')}
-          disabled={loading}
-          className="p-3.5 rounded-xl bg-slate-950 border border-emerald-500/30 hover:border-emerald-500 text-left transition flex flex-col justify-between group"
-        >
-          <div className="flex items-center justify-between mb-2">
-            <DollarSign className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition" />
-            <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 font-semibold">Budget AI</span>
-          </div>
-          <span className="text-xs font-bold text-slate-200">Simulate Budget Cut</span>
-          <span className="text-[10px] text-slate-400 mt-1">Restructures costs to lower target</span>
-        </button>
-
-        <button
-          onClick={onOptimize}
-          disabled={loading}
-          className="p-3.5 rounded-xl bg-slate-950 border border-sky-500/30 hover:border-sky-500 text-left transition flex flex-col justify-between group"
-        >
-          <div className="flex items-center justify-between mb-2">
-            <Zap className="w-5 h-5 text-sky-400 group-hover:scale-110 transition" />
-            <span className="text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-300 font-semibold">Optimizer</span>
-          </div>
-          <span className="text-xs font-bold text-slate-200">Optimize Transit Routes</span>
-          <span className="text-[10px] text-slate-400 mt-1">Re-sequences stops to cut travel time</span>
-        </button>
+      {/* Grid of Simulation Triggers */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {actions.map((act) => {
+          const Icon = act.icon;
+          return (
+            <button
+              key={act.id}
+              onClick={() => (act.type === 'optimize' ? onOptimize() : onDisrupt(act.id))}
+              disabled={loading}
+              className="p-4 rounded-xl bg-slate-50/70 border border-slate-200 hover:border-slate-300 hover:bg-white hover:shadow-md text-left transition-all group flex flex-col justify-between cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <div className={`p-2 rounded-lg bg-white border border-slate-200 shadow-2xs group-hover:scale-105 transition ${act.iconColor}`}>
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <span className={`text-[10px] px-2 py-0.5 rounded-md border font-semibold ${act.badgeColor}`}>
+                    {act.badge}
+                  </span>
+                </div>
+                <div className="text-xs font-bold text-slate-900 group-hover:text-sky-700 transition">
+                  {act.label}
+                </div>
+              </div>
+              <div className="text-[11px] text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                {act.description}
+              </div>
+            </button>
+          );
+        })}
       </div>
     </div>
   );

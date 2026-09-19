@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Clock, MapPin, DollarSign, Navigation, ShieldAlert, Sparkles, Building, Sun, Umbrella } from 'lucide-react';
+import { Clock, MapPin, DollarSign, Navigation, Building, Sun, Umbrella, Star } from 'lucide-react';
 
 export default function ItineraryTimeline({ trip }) {
   const [activeDayIndex, setActiveDayIndex] = useState(0);
@@ -9,106 +9,128 @@ export default function ItineraryTimeline({ trip }) {
   const currentDay = trip.days[activeDayIndex] || trip.days[0];
 
   return (
-    <div className="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl">
-      {/* Day Selector Tabs */}
-      <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-        <div className="flex gap-2 overflow-x-auto">
+    <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+      {/* Day Selector Tabs & Header */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+        <div className="flex gap-2 overflow-x-auto pb-1 sm:pb-0">
           {trip.days.map((day, idx) => (
             <button
               key={day.day_number}
               onClick={() => setActiveDayIndex(idx)}
-              className={`px-5 py-2.5 rounded-xl font-bold text-sm transition flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                 activeDayIndex === idx
-                  ? 'bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/25'
-                  : 'bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700'
+                  ? 'bg-sky-600 text-white shadow-md shadow-sky-600/20'
+                  : 'bg-slate-100 text-slate-700 border border-slate-200 hover:border-slate-300 hover:bg-slate-200/60'
               }`}
             >
               <span>Day {day.day_number}</span>
-              <span className="text-xs opacity-75 font-normal">({day.activities.length} stops)</span>
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${activeDayIndex === idx ? 'bg-white/20 text-white font-bold' : 'bg-white text-slate-600'}`}>
+                {day.activities.length} stops
+              </span>
             </button>
           ))}
         </div>
 
-        <div className="hidden sm:flex items-center gap-4 text-xs text-slate-400">
-          <div>Theme: <span className="text-slate-200 font-semibold">{currentDay.theme}</span></div>
-          <div>Total Transit: <span className="text-sky-400 font-semibold">{currentDay.total_transit_mins} mins</span></div>
+        <div className="flex items-center gap-3 text-xs text-slate-500">
+          <span className="hidden sm:inline">Theme: <strong className="text-slate-900">{currentDay.theme}</strong></span>
+          <span className="hidden sm:inline text-slate-300">•</span>
+          <span className="px-2.5 py-1 rounded-md bg-sky-50 border border-sky-100 text-sky-700 font-semibold">
+            ⏱ {currentDay.total_transit_mins} mins transit
+          </span>
         </div>
       </div>
 
-      {/* Activity Cards List */}
-      <div className="space-y-6 relative before:absolute before:inset-0 before:left-6 before:w-0.5 before:bg-slate-800">
-        {currentDay.activities.map((act, index) => (
-          <div key={act.id || index} className="relative pl-14">
-            {/* Timeline Node Badge */}
-            <div className={`absolute left-3.5 top-1 -translate-x-1/2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-slate-950 ${
-              act.status === 'replaced'
-                ? 'bg-amber-400 text-slate-950'
-                : act.status === 'cancelled'
-                ? 'bg-rose-500 text-white'
-                : 'bg-sky-500 text-slate-950'
-            }`}>
-              {index + 1}
-            </div>
+      {/* Activity Cards Timeline */}
+      <div className="space-y-6 relative before:absolute before:inset-0 before:left-5 before:w-0.5 before:bg-slate-200">
+        {currentDay.activities.map((act, index) => {
+          const isReplaced = act.status === 'replaced';
+          const isCancelled = act.status === 'cancelled';
 
-            {/* Main Activity Card */}
-            <div className={`rounded-xl p-5 border transition ${
-              act.status === 'replaced'
-                ? 'bg-amber-500/5 border-amber-500/30'
-                : 'bg-slate-900/80 border-slate-800 hover:border-slate-700'
-            }`}>
-              <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-                <div className="flex items-center gap-2.5">
-                  <h3 className="text-base font-bold text-slate-100">{act.title}</h3>
-                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-800 text-sky-400 border border-slate-700">
-                    {act.category}
-                  </span>
-                  {act.is_indoor ? (
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 flex items-center gap-1">
-                      <Umbrella className="w-3 h-3" /> Indoor Protected
+          return (
+            <div key={act.id || index} className="relative pl-12">
+              {/* Timeline Node Badge */}
+              <div
+                className={`absolute left-5 top-2 -translate-x-1/2 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold border-2 border-white shadow-sm ring-2 ring-slate-100 ${
+                  isReplaced
+                    ? 'bg-amber-500 text-white'
+                    : isCancelled
+                    ? 'bg-rose-500 text-white'
+                    : 'bg-sky-600 text-white'
+                }`}
+              >
+                {index + 1}
+              </div>
+
+              {/* Activity Card */}
+              <div
+                className={`rounded-xl p-5 border transition-all ${
+                  isReplaced
+                    ? 'bg-amber-50/60 border-amber-300 shadow-sm'
+                    : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-md'
+                }`}
+              >
+                {/* Top Info Bar */}
+                <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h4 className="text-sm font-bold text-slate-900 tracking-tight">{act.title}</h4>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
+                      {act.category}
                     </span>
-                  ) : (
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1">
-                      <Sun className="w-3 h-3" /> Outdoor
+                    {act.is_indoor ? (
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center gap-1 font-semibold">
+                        <Umbrella className="w-2.5 h-2.5" /> Indoor
+                      </span>
+                    ) : (
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-800 flex items-center gap-1 font-semibold">
+                        <Sun className="w-2.5 h-2.5" /> Outdoor
+                      </span>
+                    )}
+                    {isReplaced && (
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-bold border border-amber-300">
+                        ⚡ Replanned by AI
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs font-semibold">
+                    <span className="flex items-center gap-1 text-sky-800 bg-sky-50 px-2.5 py-0.5 rounded-md border border-sky-200">
+                      <Clock className="w-3 h-3 text-sky-600" /> {act.start_time} – {act.end_time}
                     </span>
-                  )}
+                    <span className="text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200 font-mono font-bold">
+                      {trip.user_preferences.currency}{act.cost}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-3 text-xs font-semibold text-slate-300">
-                  <span className="flex items-center gap-1 text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded-md border border-sky-500/20">
-                    <Clock className="w-3.5 h-3.5" /> {act.start_time} – {act.end_time}
+                {/* Description */}
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">{act.description}</p>
+
+                {/* Footer details */}
+                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-3 border-t border-slate-100">
+                  <span className="flex items-center gap-1 text-[11px]">
+                    <Building className="w-3 h-3 text-slate-400" /> {act.opening_hours}
                   </span>
-                  <span className="text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
-                    {trip.user_preferences.currency}{act.cost}
+                  <span className="flex items-center gap-1 text-[11px] text-amber-600 font-bold">
+                    <Star className="w-3 h-3 fill-amber-400 text-amber-500" /> {act.rating}
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-400 leading-relaxed mb-3">{act.description}</p>
-
-              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-3 border-t border-slate-800/60">
-                <span className="flex items-center gap-1">
-                  <Building className="w-3.5 h-3.5 text-slate-500" /> {act.opening_hours}
-                </span>
-                <span className="flex items-center gap-1 text-amber-400 font-medium">
-                  ★ {act.rating}
-                </span>
-              </div>
+              {/* Transit Connector to Next Stop */}
+              {act.transport_to_next && index < currentDay.activities.length - 1 && (
+                <div className="my-2.5 ml-2 flex items-center gap-2 text-[11px] text-slate-600 bg-slate-100/90 border border-slate-200 rounded-lg px-3 py-1.5 w-fit shadow-2xs">
+                  <Navigation className="w-3 h-3 text-sky-600" />
+                  <span>
+                    Transit: <strong className="text-slate-900">{act.transport_to_next.distance_km} km</strong> via{' '}
+                    <span className="capitalize text-sky-700 font-bold">{act.transport_to_next.mode}</span> (~
+                    {act.transport_to_next.duration_mins} mins, {trip.user_preferences.currency}
+                    {act.transport_to_next.cost})
+                  </span>
+                </div>
+              )}
             </div>
-
-            {/* Transit Indicator to Next Stop */}
-            {act.transport_to_next && index < currentDay.activities.length - 1 && (
-              <div className="my-3 ml-2 flex items-center gap-2 text-xs text-slate-400 bg-slate-950/60 border border-slate-800/80 rounded-lg px-3 py-1.5 w-fit">
-                <Navigation className="w-3.5 h-3.5 text-sky-400" />
-                <span>
-                  Next Stop: <strong className="text-slate-200">{act.transport_to_next.distance_km} km</strong> via{' '}
-                  <span className="capitalize text-sky-300">{act.transport_to_next.mode}</span> (~
-                  {act.transport_to_next.duration_mins} mins, {trip.user_preferences.currency}
-                  {act.transport_to_next.cost})
-                </span>
-              </div>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
