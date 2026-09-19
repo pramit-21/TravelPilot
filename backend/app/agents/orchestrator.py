@@ -1,3 +1,11 @@
+import sys
+import os
+
+# Ensure backend directory is in sys.path
+backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
+
 from typing import Dict, Any, List, Optional
 from app.models import UserPreferences, TripItinerary, DisruptionRequest, AgentResponse, ChatResponse
 from app.agents.planner import PlannerAgent
@@ -34,7 +42,7 @@ class AgentOrchestrator:
     def optimize_trip(self, trip_id: str) -> AgentResponse:
         trip = self.trips_db.get(trip_id)
         if not trip:
-            raise ValueError("Trip not found")
+            raise ValueError(f"Trip with ID '{trip_id}' not found")
             
         opt_trip, reasoning, tools = self.optimizer.optimize_itinerary(trip)
         self.trips_db[trip_id] = opt_trip
@@ -52,11 +60,15 @@ class AgentOrchestrator:
     def handle_disruption(self, request: DisruptionRequest) -> AgentResponse:
         trip = self.trips_db.get(request.trip_id)
         if not trip:
-            raise ValueError("Trip not found")
+            raise ValueError(f"Trip with ID '{request.trip_id}' not found")
             
         # Scan disruptions
         disruptions, scan_reasoning, scan_tools = self.monitor.scan_trip_disruptions(trip, request.disruption_type)
         
+        # Propagate detected affected activity if not explicitly specified
+        if not request.target_activity_id and disruptions and disruptions[0].affected_activity_ids:
+            request.target_activity_id = disruptions[0].affected_activity_ids[0]
+
         # Execute replanning
         replan_trip, replan_reasoning, replan_tools = self.replanner.handle_disruption(trip, request)
         self.trips_db[request.trip_id] = replan_trip
@@ -75,10 +87,17 @@ class AgentOrchestrator:
         )
 
     def process_chat(self, trip_id: str, message: str) -> ChatResponse:
-        trip = self.trips_db.get(trip_id)
+        trip = self.trips_db.get(trip_id) if trip_id else None
         msg_lower = message.lower()
         
         if "rain" in msg_lower or "weather" in msg_lower:
+            if not trip:
+                return ChatResponse(
+                    reply="I detected weather questions, but there is no active trip plan yet. Please create a trip first so I can inspect and adapt your itinerary!",
+                    action_taken="NO_ACTIVE_TRIP",
+                    tools_used=["weather_tool"],
+                    updated_trip=None
+                )
             req = DisruptionRequest(trip_id=trip_id, disruption_type="WEATHER_RAIN")
             res = self.handle_disruption(req)
             return ChatResponse(
@@ -88,6 +107,13 @@ class AgentOrchestrator:
                 updated_trip=res.updated_trip
             )
         elif "budget" in msg_lower or "cheaper" in msg_lower or "cost" in msg_lower:
+            if not trip:
+                return ChatResponse(
+                    reply="I detected budget adjustment requests, but there is no active trip plan yet. Please generate a trip first so I can recalibrate costs!",
+                    action_taken="NO_ACTIVE_TRIP",
+                    tools_used=["budget_calculator"],
+                    updated_trip=None
+                )
             req = DisruptionRequest(trip_id=trip_id, disruption_type="BUDGET_CUT")
             res = self.handle_disruption(req)
             return ChatResponse(
@@ -108,3 +134,4 @@ class AgentOrchestrator:
                 tools_used=["rag_retriever", "places_database"],
                 updated_trip=trip
             )
+

@@ -1,3 +1,11 @@
+import sys
+import os
+
+# Ensure backend directory is in sys.path
+backend_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
+
 from typing import Dict, Any, List, Tuple
 from app.models import TripItinerary, DisruptionRequest, Activity, TransportSegment
 from app.tools.places_tool import PlacesTool
@@ -22,21 +30,30 @@ class ReplannerAgent:
             tools_called.append({"tool": "rag_retrieval", "query": "indoor alternatives", "retrieved_count": len(rag_docs)})
             
             replaced_count = 0
+            current_ids = {a.id for d in trip.days for a in d.activities}
             for day in trip.days:
                 for idx, act in enumerate(day.activities):
                     if not act.is_indoor and act.status == "confirmed":
-                        alt = self.places_tool.get_indoor_alternative(trip.destination, act.id)
+                        alt = self.places_tool.get_indoor_alternative(
+                            trip.destination,
+                            act.id,
+                            exclude_place_ids=list(current_ids)
+                        )
                         if alt:
                             orig_title = act.title
                             act.id = alt["id"]
                             act.title = alt["title"]
                             act.category = alt["category"]
                             act.description = f"[Weather Replacement] {alt['description']}"
+                            act.lat = alt["lat"]
+                            act.lng = alt["lng"]
+                            act.location_name = alt["title"]
                             act.is_indoor = True
                             act.cost = alt["cost"]
                             act.opening_hours = alt["opening_hours"]
                             act.rating = alt["rating"]
                             act.status = "replaced"
+                            current_ids.add(alt["id"])
                             
                             replaced_count += 1
                             reasoning.append(f"Day {day.day_number}: Replaced outdoor '{orig_title}' with indoor alternative '{act.title}' ({alt['category']}).")
@@ -47,23 +64,37 @@ class ReplannerAgent:
 
         elif request.disruption_type == "VENUE_CLOSED":
             target_id = request.target_activity_id
+            current_ids = {a.id for d in trip.days for a in d.activities}
             for day in trip.days:
                 for idx, act in enumerate(day.activities):
-                    if target_id and act.id == target_id:
+                    # If target_id is matching, or if no target_id specified pick the first confirmed
+                    if (target_id and act.id == target_id) or (not target_id and act.status == "confirmed"):
                         orig_title = act.title
-                        alt = self.places_tool.get_indoor_alternative(trip.destination, act.id)
+                        alt = self.places_tool.get_indoor_alternative(
+                            trip.destination,
+                            act.id,
+                            exclude_place_ids=list(current_ids)
+                        )
                         if alt:
                             act.id = alt["id"]
                             act.title = alt["title"]
                             act.category = alt["category"]
                             act.description = f"[Closure Replacement] {alt['description']}"
+                            act.lat = alt["lat"]
+                            act.lng = alt["lng"]
+                            act.location_name = alt["title"]
                             act.cost = alt["cost"]
                             act.status = "replaced"
+                            current_ids.add(alt["id"])
                             reasoning.append(f"Replaced closed venue '{orig_title}' with nearby alternative '{act.title}'.")
                             tools_called.append({"tool": "places_search_alternative", "original": orig_title, "replacement": act.title})
                         else:
                             act.status = "cancelled"
                             reasoning.append(f"Cancelled activity '{orig_title}' as no direct venue match was found.")
+                        if not target_id:
+                            break
+                if not target_id and any(a.status in ["replaced", "cancelled"] for a in day.activities):
+                    break
             trip.health_status = "Replanned (Venue Closure Handled)"
 
         elif request.disruption_type == "BUDGET_CUT":
@@ -73,6 +104,7 @@ class ReplannerAgent:
             trip.budget = target_budget
             current_cost = 0.0
             for day in trip.days:
+
                 for act in day.activities:
                     if act.cost > 200 and act.status == "confirmed":
                         act.cost = round(act.cost * 0.5, 0)

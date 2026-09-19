@@ -33,17 +33,28 @@ class PlacesTool:
             filtered.append(place)
         return filtered
 
-    def get_indoor_alternative(self, destination: str, target_place_id: str) -> Optional[Dict[str, Any]]:
+    def get_indoor_alternative(
+        self,
+        destination: str,
+        target_place_id: str,
+        exclude_place_ids: Optional[List[str]] = None
+    ) -> Optional[Dict[str, Any]]:
         dest_data = self.get_destination_data(destination)
         if not dest_data:
             return None
         
         places = dest_data.get("places", [])
-        # Find target place
-        target = next((p for p in places if p["id"] == target_place_id), None)
+        exclude_set = set(exclude_place_ids or [])
+        exclude_set.add(target_place_id)
         
-        # Look for indoor venue not currently in target
+        # Look for indoor venue not currently excluded or scheduled
+        for p in places:
+            if p.get("is_indoor", False) and p["id"] not in exclude_set:
+                return p
+        
+        # Fallback to any indoor venue other than target if everything is excluded
         for p in places:
             if p.get("is_indoor", False) and p["id"] != target_place_id:
                 return p
         return None
+
