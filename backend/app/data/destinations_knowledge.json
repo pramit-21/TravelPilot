@@ -1,0 +1,279 @@
+{
+  "kolkata": {
+    "city": "Kolkata",
+    "country": "India",
+    "hotel": { "name": "Park Street Grand Hotel", "lat": 22.5540, "lng": 88.3512 },
+    "places": [
+      {
+        "id": "kol_1",
+        "title": "Victoria Memorial",
+        "category": "Historical",
+        "description": "Iconic marble building dedicated to Queen Victoria, surrounded by expansive gardens and lush green lawns.",
+        "lat": 22.5448,
+        "lng": 88.3426,
+        "is_indoor": false,
+        "cost": 50,
+        "duration_mins": 120,
+        "opening_hours": "10:00 - 18:00 (Gardens 05:30 - 18:00)",
+        "rating": 4.7,
+        "tags": ["landmark", "gardens", "architecture", "history"],
+        "indoor_alternative_id": "kol_2"
+      },
+      {
+        "id": "kol_2",
+        "title": "Indian Museum",
+        "category": "Museum",
+        "description": "The oldest and largest multi-purpose museum in the Asia-Pacific region, housing rare antiques, mummies, and armor.",
+        "lat": 22.5579,
+        "lng": 88.3511,
+        "is_indoor": true,
+        "cost": 50,
+        "duration_mins": 150,
+        "opening_hours": "10:00 - 17:00 (Closed Mondays)",
+        "rating": 4.6,
+        "tags": ["museum", "culture", "mummies", "history"]
+      },
+      {
+        "id": "kol_3",
+        "title": "Howrah Bridge & Flower Market",
+        "category": "Landmark",
+        "description": "Famous cantilever bridge spanning the Hooghly river alongside the colorful Mullick Ghat Flower Market.",
+        "lat": 22.5851,
+        "lng": 88.3468,
+        "is_indoor": false,
+        "cost": 0,
+        "duration_mins": 90,
+        "opening_hours": "Open 24 hours",
+        "rating": 4.5,
+        "tags": ["photography", "market", "river", "walking"]
+      },
+      {
+        "id": "kol_4",
+        "title": "Birla Planetarium",
+        "category": "Science / Museum",
+        "description": "Single-storied circular structure designed in the Buddhist Stupa style featuring daily astronomy shows.",
+        "lat": 22.5467,
+        "lng": 88.3470,
+        "is_indoor": true,
+        "cost": 100,
+        "duration_mins": 60,
+        "opening_hours": "12:00 - 19:00",
+        "rating": 4.4,
+        "tags": ["astronomy", "indoor", "kids", "science"]
+      },
+      {
+        "id": "kol_5",
+        "title": "Park Street Culinary Walk & Peter Cat",
+        "category": "Food",
+        "description": "Legendary street famed for iconic Chelo Kebabs, heritage cafes, and Kolkata street food delights.",
+        "lat": 22.5532,
+        "lng": 88.3530,
+        "is_indoor": true,
+        "cost": 800,
+        "duration_mins": 90,
+        "opening_hours": "11:00 - 23:00",
+        "rating": 4.8,
+        "tags": ["food", "dining", "nightlife", "kebabs"]
+      },
+      {
+        "id": "kol_6",
+        "title": "Dakshineswar Kali Temple & Belur Math",
+        "category": "Culture",
+        "description": "Spiritual center on the banks of Hooghly River founded by Rani Rashmoni, connected to Ramakrishna Paramahamsa.",
+        "lat": 22.6547,
+        "lng": 88.3578,
+        "is_indoor": false,
+        "cost": 0,
+        "duration_mins": 180,
+        "opening_hours": "06:00 - 12:30, 15:30 - 20:30",
+        "rating": 4.8,
+        "tags": ["spiritual", "temple", "river cruise", "architecture"]
+      },
+      {
+        "id": "kol_7",
+        "title": "Science City Kolkata",
+        "category": "Entertainment",
+        "description": "Largest science center in the Indian subcontinent featuring space theater, 3D digital shows, and time ride.",
+        "lat": 22.5408,
+        "lng": 88.3956,
+        "is_indoor": true,
+        "cost": 120,
+        "duration_mins": 180,
+        "opening_hours": "09:00 - 19:00",
+        "rating": 4.6,
+        "tags": ["science", "indoor", "interactive", "family"]
+      },
+      {
+        "id": "kol_8",
+        "title": "Marble Palace Mansion",
+        "category": "Historical",
+        "description": "Palatial 19th-century mansion built with ninety-six types of marble, housing classical European sculptures.",
+        "lat": 22.5824,
+        "lng": 88.3601,
+        "is_indoor": true,
+        "cost": 0,
+        "duration_mins": 90,
+        "opening_hours": "10:00 - 16:00 (Closed Mon & Thu)",
+        "rating": 4.5,
+        "tags": ["palace", "art", "mansion", "heritage"]
+      },
+      {
+        "id": "kol_9",
+        "title": "Eco Tourism Park",
+        "category": "Nature",
+        "description": "Sprawling urban park with replica 7 Wonders of the World, boating lake, and ecological zones.",
+        "lat": 22.6001,
+        "lng": 88.4650,
+        "is_indoor": false,
+        "cost": 50,
+        "duration_mins": 180,
+        "opening_hours": "12:00 - 20:30",
+        "rating": 4.6,
+        "tags": ["park", "nature", "boating", "outdoors"]
+      },
+      {
+        "id": "kol_10",
+        "title": "Academy of Fine Arts & Nandan",
+        "category": "Art",
+        "description": "Cultural hub of Kolkata hosting theatrical performances, art exhibitions, and film screenings.",
+        "lat": 22.5432,
+        "lng": 88.3475,
+        "is_indoor": true,
+        "cost": 150,
+        "duration_mins": 120,
+        "opening_hours": "15:00 - 20:00",
+        "rating": 4.7,
+        "tags": ["art", "theater", "cinema", "culture"]
+      }
+    ],
+    "rag_context": [
+      "Victoria Memorial entry tickets cost ₹50 for Indian nationals. The gardens are open early at 5:30 AM for morning walkers.",
+      "Indian Museum is located right next to Park Street Metro, ideal indoor shelter during monsoon rainstorms.",
+      "Park Street is Kolkata's premier culinary avenue with famous heritage restaurants like Peter Cat, Flurys, and Mocambo.",
+      "Howrah Bridge gets heavy traffic between 9:00 AM - 11:00 AM and 5:00 PM - 8:00 PM. Metro transit via Green Line under river is recommended.",
+      "Dakshineswar Kali Temple closes its main sanctum between 12:30 PM and 3:30 PM."
+    ]
+  },
+  "paris": {
+    "city": "Paris",
+    "country": "France",
+    "hotel": { "name": "Le Marais Boutique Hotel", "lat": 48.8566, "lng": 2.3522 },
+    "places": [
+      {
+        "id": "par_1",
+        "title": "Eiffel Tower",
+        "category": "Landmark",
+        "description": "Iconic wrought-iron lattice tower on the Champ de Mars, offering panoramic views of Paris.",
+        "lat": 48.8584,
+        "lng": 2.2945,
+        "is_indoor": false,
+        "cost": 1800,
+        "duration_mins": 150,
+        "opening_hours": "09:30 - 22:45",
+        "rating": 4.8,
+        "tags": ["iconic", "views", "outdoors", "romance"]
+      },
+      {
+        "id": "par_2",
+        "title": "Louvre Museum",
+        "category": "Museum",
+        "description": "The world's largest art museum and historic monument housing the Mona Lisa and Venus de Milo.",
+        "lat": 48.8606,
+        "lng": 2.3376,
+        "is_indoor": true,
+        "cost": 1600,
+        "duration_mins": 180,
+        "opening_hours": "09:00 - 18:00 (Closed Tuesdays)",
+        "rating": 4.9,
+        "tags": ["art", "mona lisa", "indoor", "history"]
+      },
+      {
+        "id": "par_3",
+        "title": "Musée d'Orsay",
+        "category": "Museum",
+        "description": "Housed in a grand Beaux-Arts railway station featuring Impressionist masterpieces by Monet and Van Gogh.",
+        "lat": 48.8599,
+        "lng": 2.3266,
+        "is_indoor": true,
+        "cost": 1400,
+        "duration_mins": 150,
+        "opening_hours": "09:30 - 18:00 (Closed Mondays)",
+        "rating": 4.8,
+        "tags": ["impressionism", "art", "museum", "indoor"]
+      },
+      {
+        "id": "par_4",
+        "title": "Sainte-Chapelle & Conciergerie",
+        "category": "Historical",
+        "description": "Royal chapel in Gothic style with breathtaking 13th-century stained glass windows.",
+        "lat": 48.8554,
+        "lng": 2.3450,
+        "is_indoor": true,
+        "cost": 1000,
+        "duration_mins": 90,
+        "opening_hours": "09:00 - 17:00",
+        "rating": 4.7,
+        "tags": ["gothic", "stained glass", "indoor", "architecture"]
+      }
+    ],
+    "rag_context": [
+      "The Louvre Museum requires timed entry reservations in advance. Tuesday is closed day.",
+      "The Eiffel Tower summit elevator can be paused during strong winds or rain.",
+      "Musée d'Orsay offers free audio guides with masterworks breakdown."
+    ]
+  },
+  "tokyo": {
+    "city": "Tokyo",
+    "country": "Japan",
+    "hotel": { "name": "Shinjuku Park Tower Hotel", "lat": 35.6895, "lng": 139.6917 },
+    "places": [
+      {
+        "id": "tok_1",
+        "title": "Senso-ji Temple",
+        "category": "Culture",
+        "description": "Tokyo's oldest and most significant Buddhist temple located in Asakusa with Nakamise shopping street.",
+        "lat": 35.7148,
+        "lng": 139.7967,
+        "is_indoor": false,
+        "cost": 0,
+        "duration_mins": 120,
+        "opening_hours": "06:00 - 17:00",
+        "rating": 4.8,
+        "tags": ["temple", "culture", "street food", "history"]
+      },
+      {
+        "id": "tok_2",
+        "title": "teamLab Planets",
+        "category": "Art",
+        "description": "Immersive body-on digital art museum where visitors walk through water and light installations.",
+        "lat": 35.6491,
+        "lng": 139.7898,
+        "is_indoor": true,
+        "cost": 2200,
+        "duration_mins": 120,
+        "opening_hours": "09:00 - 22:00",
+        "rating": 4.9,
+        "tags": ["digital art", "indoor", "interactive", "modern"]
+      },
+      {
+        "id": "tok_3",
+        "title": "Meiji Jingu Shrine & Yoyogi Park",
+        "category": "Nature",
+        "description": "Serene Shinto shrine surrounded by 170 acres of evergreen forest in the heart of Harajuku.",
+        "lat": 35.6764,
+        "lng": 139.6993,
+        "is_indoor": false,
+        "cost": 0,
+        "duration_mins": 120,
+        "opening_hours": "Sunrise to Sunset",
+        "rating": 4.7,
+        "tags": ["shrine", "nature", "forest", "peaceful"]
+      }
+    ],
+    "rag_context": [
+      "teamLab Planets requires barefoot entry; water levels reach knee-high in certain art rooms.",
+      "Senso-ji Nakamise stalls close around 6:00 PM, though the temple grounds stay lit at night.",
+      "Suica/Pasmo IC cards make Tokyo subway navigation instant."
+    ]
+  }
+}
