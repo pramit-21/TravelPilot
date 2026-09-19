@@ -44,6 +44,9 @@ export default function TripForm({ onSubmit, loading }) {
         <p className="text-sm text-slate-400 mt-1">
           TravelPilot synthesizes schedules, calculates route ETAs, queries weather & RAG guides.
         </p>
+        <div className="mt-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-medium">
+          ✨ Track planned transportation, accommodation, and activities in one place.
+        </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">

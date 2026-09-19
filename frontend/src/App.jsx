@@ -7,6 +7,7 @@ import InteractiveMap from './components/InteractiveMap';
 import DisruptionSimulator from './components/DisruptionSimulator';
 import AIChatDrawer from './components/AIChatDrawer';
 import BudgetOverview from './components/BudgetOverview';
+import TripHubOverview from './components/TripHubOverview';
 
 const API_BASE = 'http://127.0.0.1:8000/api';
 
@@ -113,6 +114,9 @@ export default function App() {
               onOptimize={handleOptimize}
               loading={loading}
             />
+
+            {/* Trip Hub: Track planned transportation, accommodation, and activities in one place */}
+            <TripHubOverview trip={activeTrip} />
 
             {/* Budget Analytics */}
             <BudgetOverview trip={activeTrip} />
