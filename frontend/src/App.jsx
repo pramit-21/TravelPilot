@@ -115,7 +115,7 @@ export default function App() {
               loading={loading}
             />
 
-            {/* Trip Hub: Track planned transportation, accommodation, and activities in one place */}
+            {/* Trip Hub */}
             <TripHubOverview trip={activeTrip} />
 
             {/* Budget Analytics */}

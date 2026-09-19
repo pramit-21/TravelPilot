@@ -44,9 +44,6 @@ export default function TripHubOverview({ trip }) {
             </div>
             <h3 className="text-base font-bold text-slate-100">Trip Management Hub</h3>
           </div>
-          <p className="text-xs text-sky-300/80 mt-1 font-medium">
-            Track planned transportation, accommodation, and activities in one place.
-          </p>
         </div>
         <span className="text-xs px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300 font-mono flex items-center gap-1.5">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> All Bookings Synchronized
