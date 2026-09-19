@@ -24,6 +24,7 @@ class Activity(BaseModel):
     opening_hours: str = "09:00 - 18:00"
     rating: float = 4.5
     image_url: Optional[str] = None
+    place_id: Optional[str] = None
     status: str = "confirmed"  # confirmed, cancelled, replaced, delayed
     transport_to_next: Optional[TransportSegment] = None
 
