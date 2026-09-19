@@ -106,22 +106,53 @@ export default function App() {
         }}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {errorMessage && (
-          <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center justify-between shadow-sm">
-            <span>{errorMessage}</span>
-            <button
-              onClick={() => setErrorMessage(null)}
-              className="text-rose-600 hover:text-rose-800 underline font-semibold ml-4 cursor-pointer"
-            >
-              Dismiss
-            </button>
-          </div>
-        )}
+      {/* Landing View: Full-Bleed Cinematic Hero Banner */}
+      {!activeTrip ? (
+        <div className="flex-1 relative flex flex-col justify-center overflow-hidden min-h-[calc(100vh-65px)]">
+          {/* Background Photo */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"
+            style={{ backgroundImage: `url('/hero-travel.jpg')` }}
+          />
 
-        {!activeTrip ? (
-          <TripForm onSubmit={handleCreateTrip} loading={loading} />
-        ) : (
+          {/* Deep Cinematic Gradient Overlay for Contrast & Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/65 to-slate-950/90 backdrop-blur-[0.5px]" />
+
+          {/* Radial Ambient Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-500/20 via-transparent to-transparent pointer-events-none" />
+
+          {/* Content Container */}
+          <div className="relative z-10 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            {errorMessage && (
+              <div className="mb-6 p-4 rounded-2xl bg-rose-950/80 border border-rose-500/40 text-rose-200 text-xs font-medium flex items-center justify-between shadow-xl backdrop-blur-md">
+                <span>{errorMessage}</span>
+                <button
+                  onClick={() => setErrorMessage(null)}
+                  className="text-rose-400 hover:text-rose-200 underline font-semibold ml-4 cursor-pointer"
+                >
+                  Dismiss
+                </button>
+              </div>
+            )}
+
+            <TripForm onSubmit={handleCreateTrip} loading={loading} />
+          </div>
+        </div>
+      ) : (
+        /* Active Trip Workspace: Clean Focused Dashboard */
+        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {errorMessage && (
+            <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center justify-between shadow-sm">
+              <span>{errorMessage}</span>
+              <button
+                onClick={() => setErrorMessage(null)}
+                className="text-rose-600 hover:text-rose-800 underline font-semibold ml-4 cursor-pointer"
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
+
           <div className="space-y-6">
             {/* Agent Reasoning Diagnostic Trace */}
             <AgentThoughtLog agentResponse={agentResponse} />
@@ -156,8 +187,8 @@ export default function App() {
               lastChatResponse={lastChatResponse}
             />
           </div>
-        )}
-      </main>
+        </main>
+      )}
 
       {/* Clean Light Footer */}
       <footer className="border-t border-slate-200 bg-white/60 py-6 text-center text-xs text-slate-500">

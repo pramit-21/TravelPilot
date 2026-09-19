@@ -19,7 +19,8 @@ export default function TripForm({ onSubmit, loading }) {
       currency: '₹',
       defaultBudget: 20000,
       coords: { lat: 22.5540, lng: 88.3512 },
-      hotel: 'Park Street Grand Hotel'
+      hotel: 'Park Street Grand Hotel',
+      image: '/kolkata.jpg'
     },
     {
       id: 'Paris',
@@ -29,7 +30,8 @@ export default function TripForm({ onSubmit, loading }) {
       currency: '€',
       defaultBudget: 2200,
       coords: { lat: 48.8566, lng: 2.3522 },
-      hotel: 'Le Marais Boutique Hotel'
+      hotel: 'Le Marais Boutique Hotel',
+      image: '/paris.jpg'
     },
     {
       id: 'Tokyo',
@@ -39,7 +41,8 @@ export default function TripForm({ onSubmit, loading }) {
       currency: '¥',
       defaultBudget: 180000,
       coords: { lat: 35.6895, lng: 139.6917 },
-      hotel: 'Shinjuku Central Hotel'
+      hotel: 'Shinjuku Central Hotel',
+      image: '/tokyo.jpg'
     }
   ];
 
@@ -76,25 +79,41 @@ export default function TripForm({ onSubmit, loading }) {
   const selectedCity = destinations.find((d) => d.id === destination) || destinations[0];
 
   return (
-    <div className="max-w-2xl mx-auto py-8">
+    <div className="max-w-2xl mx-auto">
       {/* Header Banner */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold mb-3 shadow-xs">
-          <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-          Autonomous Multi-Agent Planner
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sky-200 text-xs font-semibold mb-4 shadow-lg shadow-black/20">
+          <Sparkles className="w-3.5 h-3.5 text-sky-400 animate-pulse" />
+          Autonomous Multi-Agent AI Travel Engine
         </div>
-        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+        <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl drop-shadow-md">
           Where would you like to travel?
         </h1>
-        <p className="text-sm text-slate-600 mt-2 max-w-lg mx-auto leading-relaxed">
-          Our specialized AI agents will curate schedules, optimize transit routes, check live weather, and balance your budget.
+        <p className="text-sm sm:text-base text-slate-200 mt-3 max-w-xl mx-auto leading-relaxed drop-shadow-sm font-medium">
+          Our specialized AI agents synthesize schedules, optimize transit routes, check live weather, and balance your budget in real time.
         </p>
+
+        {/* Trust Stats Bar */}
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-5 text-xs text-slate-300 font-medium">
+          <span className="flex items-center gap-1.5 bg-slate-900/40 px-3 py-1 rounded-full border border-white/10 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+            4 Coordinated AI Agents
+          </span>
+          <span className="flex items-center gap-1.5 bg-slate-900/40 px-3 py-1 rounded-full border border-white/10 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-sky-400"></span>
+            Live Weather & Geo-Mapping
+          </span>
+          <span className="flex items-center gap-1.5 bg-slate-900/40 px-3 py-1 rounded-full border border-white/10 backdrop-blur-xs">
+            <span className="w-2 h-2 rounded-full bg-indigo-400"></span>
+            Autonomous Disruption Recovery
+          </span>
+        </div>
       </div>
 
-      {/* Main Clean Card */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl shadow-slate-200/50">
+      {/* Main Planning Form Card with Frosted Glass Elevation */}
+      <div className="bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/60 shadow-2xl shadow-slate-950/40">
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Destination Selection */}
+          {/* Destination Selection with Official Imagery */}
           <div>
             <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
               Select Destination
@@ -107,23 +126,46 @@ export default function TripForm({ onSubmit, loading }) {
                     key={item.id}
                     type="button"
                     onClick={() => handleSelectCity(item)}
-                    className={`p-4 rounded-xl border text-left transition-all cursor-pointer relative ${
+                    className={`group relative overflow-hidden rounded-2xl border text-left transition-all duration-300 cursor-pointer h-32 flex flex-col justify-end p-3.5 ${
                       isSelected
-                        ? 'bg-sky-50/80 border-sky-600 text-slate-900 shadow-sm ring-2 ring-sky-500/20'
-                        : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60 text-slate-700'
+                        ? 'border-sky-500 shadow-lg shadow-sky-500/25 ring-2 ring-sky-500 scale-[1.02]'
+                        : 'border-slate-200 hover:border-slate-400 shadow-sm hover:shadow-md'
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-sm tracking-tight text-slate-900">{item.name}</span>
-                      {isSelected ? (
-                        <div className="w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center">
-                          <Check className="w-2.5 h-2.5 stroke-[3]" />
-                        </div>
-                      ) : (
-                        <span className="text-[10px] text-slate-400 font-mono uppercase font-semibold">{item.country}</span>
-                      )}
+                    {/* Background City Image with Hover Zoom */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    />
+                    {/* Dark Vignette Overlay for Crisp Contrast */}
+                    <div
+                      className={`absolute inset-0 transition-opacity duration-300 ${
+                        isSelected
+                          ? 'bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-slate-900/30'
+                          : 'bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-slate-900/20 group-hover:from-slate-950/90'
+                      }`}
+                    />
+
+                    {/* Card Content */}
+                    <div className="relative z-10 w-full">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-extrabold text-sm tracking-tight text-white drop-shadow-sm">
+                          {item.name}
+                        </span>
+                        {isSelected ? (
+                          <div className="w-5 h-5 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-md">
+                            <Check className="w-3 h-3 stroke-[3]" />
+                          </div>
+                        ) : (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-black/50 backdrop-blur-xs text-white/90 font-mono uppercase font-semibold">
+                            {item.country}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[11px] text-slate-200 line-clamp-1 font-medium drop-shadow-sm">
+                        {item.subtitle}
+                      </p>
                     </div>
-                    <p className="text-[11px] text-slate-500 line-clamp-1">{item.subtitle}</p>
                   </button>
                 );
               })}
