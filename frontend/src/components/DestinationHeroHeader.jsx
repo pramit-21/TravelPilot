@@ -250,7 +250,7 @@ export default function DestinationHeroHeader({ trip, activeBg, onSelectBg }) {
           </div>
 
           {/* Mini Gallery Cards */}
-          <div className="flex items-center gap-3 overflow-x-auto max-w-full pb-1 sm:pb-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto max-w-full py-1.5 no-scrollbar scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {destInfo.gallery.map((photo, idx) => {
               const isCurrent = (activeBg || destInfo.defaultBg) === photo.url;
               return (
@@ -258,8 +258,8 @@ export default function DestinationHeroHeader({ trip, activeBg, onSelectBg }) {
                   key={idx}
                   className={`group relative rounded-xl overflow-hidden cursor-pointer border transition-all duration-300 shrink-0 w-28 sm:w-36 h-20 sm:h-22 ${
                     isCurrent
-                      ? 'border-sky-400 ring-2 ring-sky-400/50 shadow-lg shadow-sky-500/20 scale-105'
-                      : 'border-white/30 hover:border-white/80 hover:scale-102 opacity-85 hover:opacity-100'
+                      ? 'border-sky-400 ring-2 ring-sky-400/80 ring-offset-1 ring-offset-slate-900 shadow-lg shadow-sky-500/25'
+                      : 'border-white/30 hover:border-white/80 opacity-85 hover:opacity-100'
                   }`}
                   onClick={() => onSelectBg && onSelectBg(photo.url)}
                   title={`Click to set as wallpaper: ${photo.title}`}
