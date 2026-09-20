@@ -41,6 +41,42 @@ export const DESTINATION_MEDIA = {
     defaultBg: '/paris-eiffel.jpg',
     gallery: [
       {
+        url: '/places/sacre-coeur.jpg',
+        title: 'Sacré-Cœur Basilica & Montmartre',
+        category: 'Bohemian Hilltop Basilica',
+        desc: 'Gleaming white Romano-Byzantine domes crowning the heights of Montmartre overlooking the sprawling Parisian panorama.'
+      },
+      {
+        url: '/places/sainte-chapelle.jpg',
+        title: 'Sainte-Chapelle & Conciergerie',
+        category: 'Medieval Gothic Palace',
+        desc: 'Fairytale Gothic towers and clock spire of the royal Conciergerie rising gracefully along the Seine.'
+      },
+      {
+        url: '/places/luxembourg-gardens.jpg',
+        title: 'Luxembourg Gardens & Medici Fountain',
+        category: 'Palace Gardens',
+        desc: 'Enchanting reflection of the 17th-century Medici Fountain grotto framed by verdant plane trees in the Luxembourg palace grounds.'
+      },
+      {
+        url: '/places/notre-dame.jpg',
+        title: 'Notre-Dame Cathedral & Île de la Cité',
+        category: 'Gothic Masterpiece',
+        desc: 'Majestic sunset silhouette of the cathedral and flying buttresses rising above Île de la Cité and the Seine.'
+      },
+      {
+        url: '/places/musee-orsay.jpg',
+        title: "Musée d'Orsay",
+        category: 'Beaux-Arts & Impressionism',
+        desc: 'Breathtaking barrel-vaulted former railway nave showcasing legendary Impressionist masterworks and monumental historic clock.'
+      },
+      {
+        url: '/places/arc-de-triomphe.jpg',
+        title: 'Arc de Triomphe & Champs-Élysées',
+        category: 'Monumental Landmark',
+        desc: 'Spectacular aerial panorama of the triumphal arch and star avenues radiating from Place Charles de Gaulle.'
+      },
+      {
         url: '/paris-eiffel.jpg',
         title: 'Eiffel Tower Sunset',
         category: 'World Wonder',
@@ -142,13 +178,13 @@ export function getActivityPhoto(title = '', destination = '') {
   // 2. Paris Specific Landmark Locations
   if (t.includes('eiffel')) return '/paris-eiffel.jpg';
   if (t.includes('louvre')) return '/paris-louvre.jpg';
-  if (t.includes('arc de triomphe') || t.includes('champs')) return '/places/arc-de-triomphe.jpg';
-  if (t.includes('sacre') || t.includes('sacré') || t.includes('montmartre')) return '/places/sacre-coeur.jpg';
-  if (t.includes('notre-dame') || t.includes('notre dame')) return '/places/notre-dame.jpg';
+  if (t.includes('arc de triomphe') || t.includes('triomphe') || t.includes('champs') || t.includes('elys') || t.includes('élys')) return '/places/arc-de-triomphe.jpg';
+  if (t.includes('sacre') || t.includes('sacré') || t.includes('coeur') || t.includes('cœur') || t.includes('montmartre')) return '/places/sacre-coeur.jpg';
+  if (t.includes('notre-dame') || t.includes('notre dame') || t.includes('notre') || t.includes('cité') || t.includes('cite')) return '/places/notre-dame.jpg';
   if (t.includes('orsay')) return '/places/musee-orsay.jpg';
-  if (t.includes('sainte-chapelle') || t.includes('chapelle')) return '/places/sainte-chapelle.jpg';
+  if (t.includes('sainte-chapelle') || t.includes('sainte chapelle') || t.includes('chapelle') || t.includes('conciergerie')) return '/places/sainte-chapelle.jpg';
   if (t.includes('garnier') || t.includes('opera')) return '/places/palais-garnier.jpg';
-  if (t.includes('luxembourg')) return '/places/luxembourg-gardens.jpg';
+  if (t.includes('luxembourg') || t.includes('medici') || t.includes('médicis') || t.includes('medicis')) return '/places/luxembourg-gardens.jpg';
   if (t.includes('seine') || t.includes('cruise')) return '/places/seine-cruise.jpg';
   if (t.includes('catacomb')) return '/places/catacombs.jpg';
 
