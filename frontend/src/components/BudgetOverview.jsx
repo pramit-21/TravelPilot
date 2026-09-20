@@ -74,30 +74,27 @@ export default function BudgetOverview({ trip }) {
   };
 
   const categories = {};
-  if (selectedInterests.length > 0) {
-    // Assure that ONLY selected Travel focus & interests appear in the categories
-    selectedInterests.forEach((interest) => {
-      categories[interest] = 0;
-    });
 
-    trip.days?.forEach((day) => {
-      day.activities?.forEach((act) => {
-        const cost = (act.cost || 0) + (act.transport_to_next ? (act.transport_to_next.cost || 0) : 0);
-        const matchedInterest = matchActivityToSelectedInterest(act, selectedInterests);
-        if (matchedInterest) {
-          categories[matchedInterest] = (categories[matchedInterest] || 0) + cost;
-        }
-      });
+  selectedInterests.forEach((interest) => {
+    categories[interest] = 0;
+  });
+
+  let transitCost = 0;
+
+  trip.days?.forEach((day) => {
+    day.activities?.forEach((act) => {
+      const actCost = act.cost || 0;
+      const tCost = act.transport_to_next ? (act.transport_to_next.cost || 0) : 0;
+      transitCost += tCost;
+
+      const matched = matchActivityToSelectedInterest(act, selectedInterests);
+      const catName = matched || normalizeInterest(act.category) || act.category || 'Sightseeing';
+      categories[catName] = (categories[catName] || 0) + actCost;
     });
-  } else {
-    // Fallback if no specific interests selected
-    trip.days?.forEach((day) => {
-      day.activities?.forEach((act) => {
-        const cat = act.category || 'Sightseeing';
-        const cost = (act.cost || 0) + (act.transport_to_next ? (act.transport_to_next.cost || 0) : 0);
-        categories[cat] = (categories[cat] || 0) + cost;
-      });
-    });
+  });
+
+  if (transitCost > 0) {
+    categories['Transit & Logistics'] = (categories['Transit & Logistics'] || 0) + Math.round(transitCost);
   }
 
   const chartData = Object.keys(categories).map((cat) => ({
@@ -105,7 +102,7 @@ export default function BudgetOverview({ trip }) {
     value: Math.round(categories[cat])
   }));
 
-  const COLORS = ['#0284c7', '#4f46e5', '#9333ea', '#059669', '#d97706', '#db2777', '#0891b2', '#7c3aed'];
+  const COLORS = ['#0284c7', '#4f46e5', '#9333ea', '#059669', '#d97706', '#db2777', '#0891b2', '#7c3aed', '#64748b'];
 
   const totalAllocated = chartData.reduce((acc, curr) => acc + curr.value, 0);
   const pieData = totalAllocated > 0

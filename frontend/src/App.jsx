@@ -257,7 +257,7 @@ export default function App() {
               <TripHubOverview trip={activeTrip} />
 
               {/* Budget & Spend Analytics */}
-              <BudgetOverview trip={activeTrip} />
+              <BudgetOverview key={`${activeTrip.id}_${activeTrip.health_status}_${activeTrip.total_cost}`} trip={activeTrip} />
 
               {/* Main Content Grid: Timeline (with Activity Photos) + Map */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

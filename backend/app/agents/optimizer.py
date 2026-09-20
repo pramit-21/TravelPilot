@@ -67,6 +67,7 @@ class OptimizerAgent:
                 
             day.activities = optimized_order
             day.total_transit_mins = new_transit
+            day.total_cost = sum(a.cost + (a.transport_to_next.cost if a.transport_to_next else 0) for a in day.activities)
             
             saved = orig_transit - new_transit
             if saved > 0:
@@ -75,5 +76,11 @@ class OptimizerAgent:
             else:
                 reasoning.append(f"Day {day.day_number}: Route order verified optimal.")
                 
+        # Recalculate trip totals and update status
+        trip.total_cost = sum(d.total_cost for d in trip.days)
+        trip.remaining_budget = max(0.0, trip.budget - trip.total_cost)
+        trip.health_status = "Optimal (Routes Optimized)"
+        
         reasoning.insert(0, f"Route optimization complete. Total transit time reduced by {total_saved_transit} minutes across the trip.")
         return trip, reasoning, tools_called
+

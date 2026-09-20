@@ -108,11 +108,11 @@ class ReplannerAgent:
             trip.budget = target_budget
             current_cost = 0.0
             for day in trip.days:
-
                 for act in day.activities:
-                    if act.cost > 200 and act.status == "confirmed":
-                        act.cost = round(act.cost * 0.5, 0)
-                        act.description += " [Discounted / Budget Saver Entry]"
+                    if act.cost > 0 and act.status in ["confirmed", "replaced"]:
+                        act.cost = round(act.cost * 0.6, 2)
+                        if "[Discounted" not in act.description:
+                            act.description += " [Discounted / Budget Saver Entry]"
                         reasoning.append(f"Substituted high-tier entry ticket for '{act.title}' with standard saver ticket.")
                     current_cost += act.cost + (act.transport_to_next.cost if act.transport_to_next else 0)
             
