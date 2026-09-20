@@ -103,6 +103,36 @@ export const DESTINATION_MEDIA = {
     defaultBg: '/tokyo-pagoda.jpg',
     gallery: [
       {
+        url: '/places/odaiba.jpg',
+        title: 'Odaiba Waterfront & Gundam Statue',
+        category: 'Futuristic Bay & Sci-Fi',
+        desc: 'Colossal life-sized Unicorn Gundam statue standing tall against Tokyo Bay’s entertainment island.'
+      },
+      {
+        url: '/places/ginza.jpg',
+        title: 'Ginza Luxury Avenue & Kabuki-za Theater',
+        category: 'Classic Theater & Luxury',
+        desc: 'Traditional Japanese theatrical gables and glowing red paper lanterns of Kabuki-za in Tokyo’s upscale Ginza.'
+      },
+      {
+        url: '/places/tokyo-tower.jpg',
+        title: 'Tokyo Tower & Zojo-ji Temple',
+        category: 'Classic Tokyo Symbol',
+        desc: 'Iconic red-and-white communications tower rising behind the historic 600-year-old Zojo-ji temple grounds.'
+      },
+      {
+        url: '/places/meiji-shrine.jpg',
+        title: 'Meiji Jingu Shrine & Yoyogi Park',
+        category: 'Sacred Shinto Forest',
+        desc: 'Monumental cypress Torii gates and towering wooden Romon portal nestled within a tranquil 170-acre forest.'
+      },
+      {
+        url: '/places/tokyo-skytree.jpg',
+        title: 'Tokyo Skytree Observation Deck',
+        category: 'Futuristic Tower',
+        desc: 'Illuminated 634-meter tower soaring above the Tokyo metropolis with panoramic night skyline views.'
+      },
+      {
         url: '/tokyo-pagoda.jpg',
         title: 'Senso-ji Pagoda & Mt. Fuji',
         category: 'Ancient Heritage',
@@ -191,17 +221,17 @@ export function getActivityPhoto(title = '', destination = '') {
   // 3. Tokyo Specific Landmark Locations
   if (t.includes('senso') || t.includes('pagoda')) return '/tokyo-pagoda.jpg';
   if (t.includes('shibuya') || t.includes('hachiko')) return '/tokyo-shibuya.jpg';
-  if (t.includes('skytree')) return '/places/tokyo-skytree.jpg';
-  if (t.includes('tokyo tower') || t.includes('zojo')) return '/places/tokyo-tower.jpg';
-  if (t.includes('meiji') || t.includes('yoyogi')) return '/places/meiji-shrine.jpg';
+  if (t.includes('skytree') || t.includes('sky tree')) return '/places/tokyo-skytree.jpg';
+  if (t.includes('tokyo tower') || t.includes('zojo') || t.includes('zōjō')) return '/places/tokyo-tower.jpg';
+  if (t.includes('meiji') || t.includes('jingu') || t.includes('yoyogi')) return '/places/meiji-shrine.jpg';
   if (t.includes('akihabara')) return '/places/akihabara.jpg';
   if (t.includes('shinjuku gyoen')) return '/places/shinjuku-gyoen.jpg';
   if (t.includes('tsukiji')) return '/places/tsukiji.jpg';
   if (t.includes('teamlab')) return '/places/teamlab.jpg';
   if (t.includes('roppongi') || t.includes('mori')) return '/places/roppongi-hills.jpg';
-  if (t.includes('ginza')) return '/places/ginza.jpg';
+  if (t.includes('kabuki') || (t.includes('ginza') && !t.includes('yanaka'))) return '/places/ginza.jpg';
   if (t.includes('harajuku') || t.includes('takeshita')) return '/places/harajuku.jpg';
-  if (t.includes('odaiba') || t.includes('gundam')) return '/places/odaiba.jpg';
+  if (t.includes('odaiba') || t.includes('gundam') || t.includes('divercity')) return '/places/odaiba.jpg';
 
   // City Destination-level fallbacks
   if (d.includes('kolkata')) return '/kolkata.jpg';
