@@ -53,6 +53,7 @@ class ReplannerAgent:
                             act.cost = alt["cost"]
                             act.opening_hours = alt["opening_hours"]
                             act.rating = alt["rating"]
+                            act.image_url = alt.get("image_url")
                             act.status = "replaced"
                             current_ids.add(alt["id"])
                             
@@ -86,6 +87,7 @@ class ReplannerAgent:
                             act.lng = alt["lng"]
                             act.location_name = alt["title"]
                             act.cost = alt["cost"]
+                            act.image_url = alt.get("image_url")
                             act.status = "replaced"
                             current_ids.add(alt["id"])
                             reasoning.append(f"Replaced closed venue '{orig_title}' with nearby alternative '{act.title}'.")

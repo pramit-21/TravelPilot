@@ -2,7 +2,12 @@
   "kolkata": {
     "city": "Kolkata",
     "country": "India",
-    "hotel": { "name": "Park Street Grand Hotel", "lat": 22.5540, "lng": 88.3512 },
+    "hotel": {
+      "name": "Park Street Grand Hotel",
+      "lat": 22.554,
+      "lng": 88.3512,
+      "image_url": "/places/hotel-park-street.jpg"
+    },
     "places": [
       {
         "id": "kol_1",
@@ -16,7 +21,13 @@
         "duration_mins": 120,
         "opening_hours": "10:00 - 18:00 (Gardens 05:30 - 18:00)",
         "rating": 4.7,
-        "tags": ["landmark", "gardens", "architecture", "history"]
+        "tags": [
+          "landmark",
+          "gardens",
+          "architecture",
+          "history"
+        ],
+        "image_url": "/kolkata-victoria.jpg"
       },
       {
         "id": "kol_2",
@@ -30,7 +41,13 @@
         "duration_mins": 150,
         "opening_hours": "10:00 - 17:00 (Closed Mondays)",
         "rating": 4.6,
-        "tags": ["museum", "culture", "mummies", "history"]
+        "tags": [
+          "museum",
+          "culture",
+          "mummies",
+          "history"
+        ],
+        "image_url": "/places/indian-museum.jpg"
       },
       {
         "id": "kol_3",
@@ -44,7 +61,13 @@
         "duration_mins": 90,
         "opening_hours": "Open 24 hours",
         "rating": 4.5,
-        "tags": ["photography", "market", "river", "walking"]
+        "tags": [
+          "photography",
+          "market",
+          "river",
+          "walking"
+        ],
+        "image_url": "/kolkata-howrah.jpg"
       },
       {
         "id": "kol_4",
@@ -52,13 +75,19 @@
         "category": "Science / Museum",
         "description": "Single-storied circular structure designed in the Buddhist Stupa style featuring daily astronomy shows.",
         "lat": 22.5467,
-        "lng": 88.3470,
+        "lng": 88.347,
         "is_indoor": true,
         "cost": 100,
         "duration_mins": 60,
         "opening_hours": "12:00 - 19:00",
         "rating": 4.4,
-        "tags": ["astronomy", "indoor", "kids", "science"]
+        "tags": [
+          "astronomy",
+          "indoor",
+          "kids",
+          "science"
+        ],
+        "image_url": "/places/birla-planetarium.jpg"
       },
       {
         "id": "kol_5",
@@ -66,13 +95,19 @@
         "category": "Food",
         "description": "Legendary street famed for iconic Chelo Kebabs, heritage cafes, and Kolkata street food delights.",
         "lat": 22.5532,
-        "lng": 88.3530,
+        "lng": 88.353,
         "is_indoor": true,
         "cost": 800,
         "duration_mins": 90,
         "opening_hours": "11:00 - 23:00",
         "rating": 4.8,
-        "tags": ["food", "dining", "nightlife", "kebabs"]
+        "tags": [
+          "food",
+          "dining",
+          "nightlife",
+          "kebabs"
+        ],
+        "image_url": "/places/park-street.jpg"
       },
       {
         "id": "kol_6",
@@ -86,7 +121,13 @@
         "duration_mins": 180,
         "opening_hours": "06:00 - 12:30, 15:30 - 20:30",
         "rating": 4.8,
-        "tags": ["spiritual", "temple", "river cruise", "architecture"]
+        "tags": [
+          "spiritual",
+          "temple",
+          "river cruise",
+          "architecture"
+        ],
+        "image_url": "/places/dakshineswar.jpg"
       },
       {
         "id": "kol_7",
@@ -100,7 +141,13 @@
         "duration_mins": 180,
         "opening_hours": "09:00 - 19:00",
         "rating": 4.6,
-        "tags": ["science", "indoor", "interactive", "family"]
+        "tags": [
+          "science",
+          "indoor",
+          "interactive",
+          "family"
+        ],
+        "image_url": "/places/science-city.jpg"
       },
       {
         "id": "kol_8",
@@ -114,7 +161,13 @@
         "duration_mins": 90,
         "opening_hours": "10:00 - 16:00 (Closed Mon & Thu)",
         "rating": 4.5,
-        "tags": ["palace", "art", "mansion", "heritage"]
+        "tags": [
+          "palace",
+          "art",
+          "mansion",
+          "heritage"
+        ],
+        "image_url": "/places/marble-palace.jpg"
       },
       {
         "id": "kol_9",
@@ -122,13 +175,19 @@
         "category": "Nature",
         "description": "Sprawling urban park with replica 7 Wonders of the World, boating lake, and ecological zones.",
         "lat": 22.6001,
-        "lng": 88.4650,
+        "lng": 88.465,
         "is_indoor": false,
         "cost": 50,
         "duration_mins": 180,
         "opening_hours": "12:00 - 20:30",
         "rating": 4.6,
-        "tags": ["park", "nature", "boating", "outdoors"]
+        "tags": [
+          "park",
+          "nature",
+          "boating",
+          "outdoors"
+        ],
+        "image_url": "/places/eco-park.jpg"
       },
       {
         "id": "kol_10",
@@ -142,7 +201,13 @@
         "duration_mins": 120,
         "opening_hours": "15:00 - 20:00",
         "rating": 4.7,
-        "tags": ["art", "theater", "cinema", "culture"]
+        "tags": [
+          "art",
+          "theater",
+          "cinema",
+          "culture"
+        ],
+        "image_url": "/places/academy-fine-arts.jpg"
       },
       {
         "id": "kol_11",
@@ -156,7 +221,13 @@
         "duration_mins": 60,
         "opening_hours": "09:00 - 17:00",
         "rating": 4.6,
-        "tags": ["cathedral", "gothic", "architecture", "quiet"]
+        "tags": [
+          "cathedral",
+          "gothic",
+          "architecture",
+          "quiet"
+        ],
+        "image_url": "/places/st-pauls.jpg"
       },
       {
         "id": "kol_12",
@@ -170,7 +241,13 @@
         "duration_mins": 90,
         "opening_hours": "Open 24 hours",
         "rating": 4.7,
-        "tags": ["ghat", "river", "sunset", "outdoors"]
+        "tags": [
+          "ghat",
+          "river",
+          "sunset",
+          "outdoors"
+        ],
+        "image_url": "/places/princep-ghat.jpg"
       },
       {
         "id": "kol_13",
@@ -184,7 +261,13 @@
         "duration_mins": 90,
         "opening_hours": "10:30 - 16:30 (Closed Mondays)",
         "rating": 4.7,
-        "tags": ["heritage", "tagore", "museum", "literature"]
+        "tags": [
+          "heritage",
+          "tagore",
+          "museum",
+          "literature"
+        ],
+        "image_url": "/places/jorasanko-thakur-bari.jpg"
       },
       {
         "id": "kol_14",
@@ -192,13 +275,19 @@
         "category": "Historical",
         "description": "Atmospheric 18th-century colonial cemetery covered in mossy neoclassical and gothic obelisks amid tropical trees.",
         "lat": 22.5484,
-        "lng": 88.3610,
+        "lng": 88.361,
         "is_indoor": false,
         "cost": 50,
         "duration_mins": 75,
         "opening_hours": "10:00 - 17:00",
         "rating": 4.5,
-        "tags": ["heritage", "history", "photography", "outdoors"]
+        "tags": [
+          "heritage",
+          "history",
+          "photography",
+          "outdoors"
+        ],
+        "image_url": "/places/south-park-cemetery.jpg"
       },
       {
         "id": "kol_15",
@@ -212,7 +301,13 @@
         "duration_mins": 110,
         "opening_hours": "10:00 - 20:30 (Closed Sundays)",
         "rating": 4.8,
-        "tags": ["books", "coffee", "intellectual", "culture"]
+        "tags": [
+          "books",
+          "coffee",
+          "intellectual",
+          "culture"
+        ],
+        "image_url": "/places/college-street.jpg"
       },
       {
         "id": "kol_16",
@@ -226,7 +321,13 @@
         "duration_mins": 60,
         "opening_hours": "08:00 - 12:00, 15:00 - 17:30 (Closed Thursdays)",
         "rating": 4.8,
-        "tags": ["peace", "history", "charity", "culture"]
+        "tags": [
+          "peace",
+          "history",
+          "charity",
+          "culture"
+        ],
+        "image_url": "/places/mother-house.jpg"
       },
       {
         "id": "kol_17",
@@ -240,7 +341,13 @@
         "duration_mins": 140,
         "opening_hours": "09:00 - 16:30 (Closed Thursdays)",
         "rating": 4.4,
-        "tags": ["zoo", "wildlife", "outdoors", "family"]
+        "tags": [
+          "zoo",
+          "wildlife",
+          "outdoors",
+          "family"
+        ],
+        "image_url": "/places/alipore-zoo.jpg"
       },
       {
         "id": "kol_18",
@@ -254,7 +361,13 @@
         "duration_mins": 75,
         "opening_hours": "11:00 - 16:30 (Closed Mondays)",
         "rating": 4.7,
-        "tags": ["freedom", "museum", "history", "indoor"]
+        "tags": [
+          "freedom",
+          "museum",
+          "history",
+          "indoor"
+        ],
+        "image_url": "/places/netaji-bhawan.jpg"
       },
       {
         "id": "kol_19",
@@ -268,7 +381,13 @@
         "duration_mins": 90,
         "opening_hours": "05:00 - 14:00, 16:00 - 22:30",
         "rating": 4.5,
-        "tags": ["temple", "pilgrimage", "spiritual", "tradition"]
+        "tags": [
+          "temple",
+          "pilgrimage",
+          "spiritual",
+          "tradition"
+        ],
+        "image_url": "/places/kalighat.jpg"
       },
       {
         "id": "kol_20",
@@ -282,7 +401,34 @@
         "duration_mins": 90,
         "opening_hours": "11:00 - 18:00 (Closed Mondays)",
         "rating": 4.6,
-        "tags": ["architecture", "heritage", "history", "museum"]
+        "tags": [
+          "architecture",
+          "heritage",
+          "history",
+          "museum"
+        ],
+        "image_url": "/places/kolkata-town-hall.jpg"
+      },
+      {
+        "id": "kol_21",
+        "title": "Birla Mandir",
+        "category": "Culture",
+        "description": "Magnificent white marble Hindu temple on Ballygunge Circular Road dedicated to Radha Krishna, celebrated for its intricate carvings and serene sanctum.",
+        "lat": 22.5306,
+        "lng": 88.365,
+        "is_indoor": true,
+        "cost": 0,
+        "duration_mins": 60,
+        "opening_hours": "05:30 - 11:30, 16:30 - 21:00",
+        "rating": 4.8,
+        "tags": [
+          "temple",
+          "birla",
+          "spiritual",
+          "culture",
+          "architecture"
+        ],
+        "image_url": "/places/birla-mandir.jpg"
       }
     ],
     "rag_context": [
@@ -296,7 +442,12 @@
   "paris": {
     "city": "Paris",
     "country": "France",
-    "hotel": { "name": "Le Marais Boutique Hotel", "lat": 48.8566, "lng": 2.3522 },
+    "hotel": {
+      "name": "Le Marais Boutique Hotel",
+      "lat": 48.8566,
+      "lng": 2.3522,
+      "image_url": "/places/hotel-le-marais.jpg"
+    },
     "places": [
       {
         "id": "par_1",
@@ -310,7 +461,13 @@
         "duration_mins": 150,
         "opening_hours": "09:30 - 22:45",
         "rating": 4.8,
-        "tags": ["iconic", "views", "outdoors", "romance"]
+        "tags": [
+          "iconic",
+          "views",
+          "outdoors",
+          "romance"
+        ],
+        "image_url": "/paris-eiffel.jpg"
       },
       {
         "id": "par_2",
@@ -324,7 +481,13 @@
         "duration_mins": 180,
         "opening_hours": "09:00 - 18:00 (Closed Tuesdays)",
         "rating": 4.9,
-        "tags": ["art", "mona lisa", "indoor", "history"]
+        "tags": [
+          "art",
+          "mona lisa",
+          "indoor",
+          "history"
+        ],
+        "image_url": "/paris-louvre.jpg"
       },
       {
         "id": "par_3",
@@ -338,7 +501,13 @@
         "duration_mins": 150,
         "opening_hours": "09:30 - 18:00 (Closed Mondays)",
         "rating": 4.8,
-        "tags": ["impressionism", "art", "museum", "indoor"]
+        "tags": [
+          "impressionism",
+          "art",
+          "museum",
+          "indoor"
+        ],
+        "image_url": "/places/musee-orsay.jpg"
       },
       {
         "id": "par_4",
@@ -346,27 +515,39 @@
         "category": "Historical",
         "description": "Royal chapel in Gothic style with breathtaking 13th-century stained glass windows.",
         "lat": 48.8554,
-        "lng": 2.3450,
+        "lng": 2.345,
         "is_indoor": true,
         "cost": 1000,
         "duration_mins": 90,
         "opening_hours": "09:00 - 17:00",
         "rating": 4.7,
-        "tags": ["gothic", "stained glass", "indoor", "architecture"]
+        "tags": [
+          "gothic",
+          "stained glass",
+          "indoor",
+          "architecture"
+        ],
+        "image_url": "/places/sainte-chapelle.jpg"
       },
       {
         "id": "par_5",
         "title": "Notre-Dame Cathedral & Île de la Cité",
         "category": "Historical",
         "description": "Masterpiece of French Gothic architecture on an island in the Seine, renowned for its rose windows and twin towers.",
-        "lat": 48.8530,
+        "lat": 48.853,
         "lng": 2.3499,
         "is_indoor": false,
         "cost": 0,
         "duration_mins": 90,
         "opening_hours": "08:00 - 18:45",
         "rating": 4.8,
-        "tags": ["gothic", "cathedral", "seine", "history"]
+        "tags": [
+          "gothic",
+          "cathedral",
+          "seine",
+          "history"
+        ],
+        "image_url": "/places/notre-dame.jpg"
       },
       {
         "id": "par_6",
@@ -374,13 +555,19 @@
         "category": "Landmark",
         "description": "Monumental triumphal arch honoring French military victories, crowning the world-famous avenue.",
         "lat": 48.8738,
-        "lng": 2.2950,
+        "lng": 2.295,
         "is_indoor": false,
         "cost": 1200,
         "duration_mins": 75,
         "opening_hours": "10:00 - 22:30",
         "rating": 4.7,
-        "tags": ["landmark", "monument", "views", "shopping"]
+        "tags": [
+          "landmark",
+          "monument",
+          "views",
+          "shopping"
+        ],
+        "image_url": "/places/arc-de-triomphe.jpg"
       },
       {
         "id": "par_7",
@@ -394,7 +581,13 @@
         "duration_mins": 120,
         "opening_hours": "06:30 - 22:30",
         "rating": 4.8,
-        "tags": ["basilica", "montmartre", "artists", "panoramic"]
+        "tags": [
+          "basilica",
+          "montmartre",
+          "artists",
+          "panoramic"
+        ],
+        "image_url": "/places/sacre-coeur.jpg"
       },
       {
         "id": "par_8",
@@ -408,21 +601,33 @@
         "duration_mins": 140,
         "opening_hours": "11:00 - 21:00 (Closed Tuesdays)",
         "rating": 4.6,
-        "tags": ["modern art", "contemporary", "indoor", "design"]
+        "tags": [
+          "modern art",
+          "contemporary",
+          "indoor",
+          "design"
+        ],
+        "image_url": "/places/centre-pompidou.jpg"
       },
       {
         "id": "par_9",
         "title": "Palais Garnier Opera House",
         "category": "Historical",
         "description": "Opulent 19th-century opera house with sweeping marble Grand Staircase and ceiling painted by Marc Chagall.",
-        "lat": 48.8720,
+        "lat": 48.872,
         "lng": 2.3316,
         "is_indoor": true,
         "cost": 1200,
         "duration_mins": 90,
         "opening_hours": "10:00 - 17:00",
         "rating": 4.8,
-        "tags": ["opera", "architecture", "interior", "luxury"]
+        "tags": [
+          "opera",
+          "architecture",
+          "interior",
+          "luxury"
+        ],
+        "image_url": "/places/palais-garnier.jpg"
       },
       {
         "id": "par_10",
@@ -436,7 +641,13 @@
         "duration_mins": 90,
         "opening_hours": "07:30 - 20:00",
         "rating": 4.8,
-        "tags": ["gardens", "park", "peaceful", "outdoors"]
+        "tags": [
+          "gardens",
+          "park",
+          "peaceful",
+          "outdoors"
+        ],
+        "image_url": "/places/luxembourg-gardens.jpg"
       },
       {
         "id": "par_11",
@@ -450,7 +661,13 @@
         "duration_mins": 90,
         "opening_hours": "10:00 - 18:00",
         "rating": 4.7,
-        "tags": ["monument", "history", "crypt", "architecture"]
+        "tags": [
+          "monument",
+          "history",
+          "crypt",
+          "architecture"
+        ],
+        "image_url": "/places/pantheon.jpg"
       },
       {
         "id": "par_12",
@@ -464,7 +681,13 @@
         "duration_mins": 80,
         "opening_hours": "09:00 - 18:00 (Closed Tuesdays)",
         "rating": 4.7,
-        "tags": ["monet", "art", "paintings", "indoor"]
+        "tags": [
+          "monet",
+          "art",
+          "paintings",
+          "indoor"
+        ],
+        "image_url": "/places/musee-orangerie.jpg"
       },
       {
         "id": "par_13",
@@ -478,7 +701,13 @@
         "duration_mins": 100,
         "opening_hours": "10:00 - 22:00",
         "rating": 4.8,
-        "tags": ["food", "boulangerie", "pastries", "dining"]
+        "tags": [
+          "food",
+          "boulangerie",
+          "pastries",
+          "dining"
+        ],
+        "image_url": "/places/le-marais.jpg"
       },
       {
         "id": "par_14",
@@ -492,7 +721,13 @@
         "duration_mins": 70,
         "opening_hours": "10:00 - 22:00",
         "rating": 4.7,
-        "tags": ["river cruise", "views", "seine", "sightseeing"]
+        "tags": [
+          "river cruise",
+          "views",
+          "seine",
+          "sightseeing"
+        ],
+        "image_url": "/places/seine-cruise.jpg"
       },
       {
         "id": "par_15",
@@ -506,7 +741,13 @@
         "duration_mins": 100,
         "opening_hours": "10:00 - 18:30 (Closed Mondays)",
         "rating": 4.8,
-        "tags": ["sculpture", "rodin", "art", "garden"]
+        "tags": [
+          "sculpture",
+          "rodin",
+          "art",
+          "garden"
+        ],
+        "image_url": "/places/musee-rodin.jpg"
       },
       {
         "id": "par_16",
@@ -520,7 +761,13 @@
         "duration_mins": 75,
         "opening_hours": "07:00 - 21:00",
         "rating": 4.7,
-        "tags": ["park", "promenade", "outdoors", "scenery"]
+        "tags": [
+          "park",
+          "promenade",
+          "outdoors",
+          "scenery"
+        ],
+        "image_url": "/places/tuileries-garden.jpg"
       },
       {
         "id": "par_17",
@@ -534,7 +781,13 @@
         "duration_mins": 80,
         "opening_hours": "10:00 - 20:30",
         "rating": 4.6,
-        "tags": ["shopping", "dome", "architecture", "views"]
+        "tags": [
+          "shopping",
+          "dome",
+          "architecture",
+          "views"
+        ],
+        "image_url": "/places/galeries-lafayette.jpg"
       },
       {
         "id": "par_18",
@@ -548,7 +801,13 @@
         "duration_mins": 80,
         "opening_hours": "09:45 - 20:30 (Closed Mondays)",
         "rating": 4.5,
-        "tags": ["subterranean", "history", "unique", "indoor"]
+        "tags": [
+          "subterranean",
+          "history",
+          "unique",
+          "indoor"
+        ],
+        "image_url": "/places/catacombs.jpg"
       },
       {
         "id": "par_19",
@@ -562,7 +821,13 @@
         "duration_mins": 110,
         "opening_hours": "10:00 - 18:00 (Closed Mondays)",
         "rating": 4.7,
-        "tags": ["art", "architecture", "indoor", "exhibition"]
+        "tags": [
+          "art",
+          "architecture",
+          "indoor",
+          "exhibition"
+        ],
+        "image_url": "/places/grand-palais.jpg"
       },
       {
         "id": "par_20",
@@ -576,7 +841,13 @@
         "duration_mins": 110,
         "opening_hours": "08:00 - 18:00",
         "rating": 4.7,
-        "tags": ["cemetery", "trees", "memorial", "outdoors"]
+        "tags": [
+          "cemetery",
+          "trees",
+          "memorial",
+          "outdoors"
+        ],
+        "image_url": "/places/pere-lachaise.jpg"
       }
     ],
     "rag_context": [
@@ -590,7 +861,12 @@
   "tokyo": {
     "city": "Tokyo",
     "country": "Japan",
-    "hotel": { "name": "Shinjuku Central Hotel", "lat": 35.6895, "lng": 139.6917 },
+    "hotel": {
+      "name": "Shinjuku Central Hotel",
+      "lat": 35.6895,
+      "lng": 139.6917,
+      "image_url": "/places/hotel-shinjuku.jpg"
+    },
     "places": [
       {
         "id": "tok_1",
@@ -604,7 +880,13 @@
         "duration_mins": 120,
         "opening_hours": "06:00 - 17:00",
         "rating": 4.8,
-        "tags": ["temple", "culture", "street food", "history"]
+        "tags": [
+          "temple",
+          "culture",
+          "street food",
+          "history"
+        ],
+        "image_url": "/tokyo-pagoda.jpg"
       },
       {
         "id": "tok_2",
@@ -618,7 +900,13 @@
         "duration_mins": 120,
         "opening_hours": "09:00 - 22:00",
         "rating": 4.9,
-        "tags": ["digital art", "indoor", "interactive", "modern"]
+        "tags": [
+          "digital art",
+          "indoor",
+          "interactive",
+          "modern"
+        ],
+        "image_url": "/places/teamlab.jpg"
       },
       {
         "id": "tok_3",
@@ -632,7 +920,13 @@
         "duration_mins": 120,
         "opening_hours": "Sunrise to Sunset",
         "rating": 4.7,
-        "tags": ["shrine", "nature", "forest", "peaceful"]
+        "tags": [
+          "shrine",
+          "nature",
+          "forest",
+          "peaceful"
+        ],
+        "image_url": "/places/meiji-shrine.jpg"
       },
       {
         "id": "tok_4",
@@ -646,7 +940,13 @@
         "duration_mins": 60,
         "opening_hours": "Open 24 hours",
         "rating": 4.8,
-        "tags": ["shibuya", "crossing", "iconic", "cityscape"]
+        "tags": [
+          "shibuya",
+          "crossing",
+          "iconic",
+          "cityscape"
+        ],
+        "image_url": "/tokyo-shibuya.jpg"
       },
       {
         "id": "tok_5",
@@ -660,7 +960,13 @@
         "duration_mins": 100,
         "opening_hours": "10:00 - 21:00",
         "rating": 4.7,
-        "tags": ["views", "skyline", "modern", "indoor"]
+        "tags": [
+          "views",
+          "skyline",
+          "modern",
+          "indoor"
+        ],
+        "image_url": "/places/tokyo-skytree.jpg"
       },
       {
         "id": "tok_6",
@@ -674,7 +980,13 @@
         "duration_mins": 120,
         "opening_hours": "10:00 - 21:00",
         "rating": 4.6,
-        "tags": ["anime", "gaming", "electronics", "indoor"]
+        "tags": [
+          "anime",
+          "gaming",
+          "electronics",
+          "indoor"
+        ],
+        "image_url": "/places/akihabara.jpg"
       },
       {
         "id": "tok_7",
@@ -688,7 +1000,13 @@
         "duration_mins": 110,
         "opening_hours": "09:00 - 17:30 (Closed Mondays)",
         "rating": 4.8,
-        "tags": ["gardens", "park", "cherry blossom", "peaceful"]
+        "tags": [
+          "gardens",
+          "park",
+          "cherry blossom",
+          "peaceful"
+        ],
+        "image_url": "/places/shinjuku-gyoen.jpg"
       },
       {
         "id": "tok_8",
@@ -702,7 +1020,13 @@
         "duration_mins": 90,
         "opening_hours": "06:00 - 14:00",
         "rating": 4.7,
-        "tags": ["sushi", "street food", "seafood", "market"]
+        "tags": [
+          "sushi",
+          "street food",
+          "seafood",
+          "market"
+        ],
+        "image_url": "/places/tsukiji.jpg"
       },
       {
         "id": "tok_9",
@@ -716,7 +1040,13 @@
         "duration_mins": 110,
         "opening_hours": "10:00 - 22:00",
         "rating": 4.8,
-        "tags": ["modern art", "views", "roppongi", "indoor"]
+        "tags": [
+          "modern art",
+          "views",
+          "roppongi",
+          "indoor"
+        ],
+        "image_url": "/places/roppongi-hills.jpg"
       },
       {
         "id": "tok_10",
@@ -730,7 +1060,13 @@
         "duration_mins": 140,
         "opening_hours": "09:30 - 17:00 (Closed Mondays)",
         "rating": 4.7,
-        "tags": ["samurai", "history", "culture", "museum"]
+        "tags": [
+          "samurai",
+          "history",
+          "culture",
+          "museum"
+        ],
+        "image_url": "/places/tokyo-national-museum.jpg"
       },
       {
         "id": "tok_11",
@@ -744,7 +1080,13 @@
         "duration_mins": 90,
         "opening_hours": "09:00 - 17:00 (Closed Mon & Fri)",
         "rating": 4.6,
-        "tags": ["imperial", "castle", "history", "gardens"]
+        "tags": [
+          "imperial",
+          "castle",
+          "history",
+          "gardens"
+        ],
+        "image_url": "/places/imperial-palace.jpg"
       },
       {
         "id": "tok_12",
@@ -758,7 +1100,13 @@
         "duration_mins": 100,
         "opening_hours": "Open 24 hours",
         "rating": 4.6,
-        "tags": ["gundam", "bay", "waterfront", "entertainment"]
+        "tags": [
+          "gundam",
+          "bay",
+          "waterfront",
+          "entertainment"
+        ],
+        "image_url": "/places/odaiba.jpg"
       },
       {
         "id": "tok_13",
@@ -772,7 +1120,13 @@
         "duration_mins": 90,
         "opening_hours": "10:00 - 20:00",
         "rating": 4.7,
-        "tags": ["kabuki", "theater", "ginza", "culture"]
+        "tags": [
+          "kabuki",
+          "theater",
+          "ginza",
+          "culture"
+        ],
+        "image_url": "/places/ginza.jpg"
       },
       {
         "id": "tok_14",
@@ -786,7 +1140,13 @@
         "duration_mins": 90,
         "opening_hours": "10:30 - 20:00",
         "rating": 4.5,
-        "tags": ["harajuku", "fashion", "crepes", "youth"]
+        "tags": [
+          "harajuku",
+          "fashion",
+          "crepes",
+          "youth"
+        ],
+        "image_url": "/places/harajuku.jpg"
       },
       {
         "id": "tok_15",
@@ -800,7 +1160,13 @@
         "duration_mins": 80,
         "opening_hours": "09:00 - 22:30",
         "rating": 4.6,
-        "tags": ["tower", "iconic", "views", "landmark"]
+        "tags": [
+          "tower",
+          "iconic",
+          "views",
+          "landmark"
+        ],
+        "image_url": "/places/tokyo-tower.jpg"
       },
       {
         "id": "tok_16",
@@ -814,7 +1180,13 @@
         "duration_mins": 90,
         "opening_hours": "10:00 - 18:00",
         "rating": 4.7,
-        "tags": ["heritage", "retro", "walking", "traditional"]
+        "tags": [
+          "heritage",
+          "retro",
+          "walking",
+          "traditional"
+        ],
+        "image_url": "/places/yanaka-ginza.jpg"
       },
       {
         "id": "tok_17",
@@ -828,7 +1200,13 @@
         "duration_mins": 120,
         "opening_hours": "10:00 - 17:00 (Closed Tuesdays)",
         "rating": 4.6,
-        "tags": ["robots", "science", "future", "indoor"]
+        "tags": [
+          "robots",
+          "science",
+          "future",
+          "indoor"
+        ],
+        "image_url": "/places/miraikan.jpg"
       },
       {
         "id": "tok_18",
@@ -842,7 +1220,13 @@
         "duration_mins": 90,
         "opening_hours": "17:00 - 02:00",
         "rating": 4.8,
-        "tags": ["izakaya", "yakitori", "nightlife", "atmosphere"]
+        "tags": [
+          "izakaya",
+          "yakitori",
+          "nightlife",
+          "atmosphere"
+        ],
+        "image_url": "/places/omoide-yokocho.jpg"
       },
       {
         "id": "tok_19",
@@ -856,7 +1240,13 @@
         "duration_mins": 60,
         "opening_hours": "06:00 - 17:00",
         "rating": 4.7,
-        "tags": ["torii gates", "shrine", "nature", "peaceful"]
+        "tags": [
+          "torii gates",
+          "shrine",
+          "nature",
+          "peaceful"
+        ],
+        "image_url": "/places/nezu-shrine.jpg"
       },
       {
         "id": "tok_20",
@@ -870,7 +1260,13 @@
         "duration_mins": 130,
         "opening_hours": "09:30 - 17:30 (Closed Mondays)",
         "rating": 4.8,
-        "tags": ["edo", "architecture", "history", "museum"]
+        "tags": [
+          "edo",
+          "architecture",
+          "history",
+          "museum"
+        ],
+        "image_url": "/places/edo-tokyo-museum.jpg"
       }
     ],
     "rag_context": [

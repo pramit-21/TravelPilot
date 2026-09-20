@@ -47,6 +47,7 @@ class UserPreferences(BaseModel):
     hotel_name: str = "Grand Park Hotel"
     hotel_lat: float = 22.5540
     hotel_lng: float = 88.3512
+    hotel_image_url: Optional[str] = None
     start_date: str = "2026-10-01"
 
 class TripItinerary(BaseModel):

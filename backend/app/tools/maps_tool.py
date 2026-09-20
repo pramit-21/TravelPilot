@@ -14,7 +14,7 @@ def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
 
 class MapsTool:
     @staticmethod
-    def calculate_route(origin_lat: float, origin_lng: float, dest_lat: float, dest_lng: float) -> Dict[str, Any]:
+    def calculate_route(origin_lat: float, origin_lng: float, dest_lat: float, dest_lng: float, city: str = None, **kwargs) -> Dict[str, Any]:
         """Calculates transit distance, duration, and optimal mode between two coordinates."""
         distance_km = haversine_distance(origin_lat, origin_lng, dest_lat, dest_lng)
         

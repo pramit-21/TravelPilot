@@ -27,6 +27,16 @@ class PlannerAgent:
             {"tool": "weather_forecast", "params": {"city": dest}, "result": weather["condition"]}
         ]
         
+        # Lookup official destination hotel details
+        dest_data = self.places_tool.get_destination_data(dest)
+        if dest_data and "hotel" in dest_data:
+            h = dest_data["hotel"]
+            if not prefs.hotel_name or prefs.hotel_name == "Grand Park Hotel":
+                prefs.hotel_name = h.get("name", prefs.hotel_name)
+                prefs.hotel_lat = h.get("lat", prefs.hotel_lat)
+                prefs.hotel_lng = h.get("lng", prefs.hotel_lng)
+            prefs.hotel_image_url = h.get("image_url")
+
         # Distribute places across days
         days: List[DayItinerary] = []
         hotel_lat, hotel_lng = prefs.hotel_lat, prefs.hotel_lng
@@ -55,7 +65,11 @@ class PlannerAgent:
                     place_index += 1
                 
                 # Calculate transit from previous point
-                route = self.maps_tool.calculate_route(prev_lat, prev_lng, place_data["lat"], place_data["lng"])
+                route = self.maps_tool.calculate_route(
+                    prev_lat, prev_lng,
+                    place_data["lat"], place_data["lng"],
+                    city=dest
+                )
                 
                 transport = TransportSegment(
                     mode=route["mode"],
@@ -83,6 +97,8 @@ class PlannerAgent:
                     is_indoor=place_data["is_indoor"],
                     opening_hours=place_data["opening_hours"],
                     rating=place_data["rating"],
+                    image_url=place_data.get("image_url"),
+                    place_id=place_data.get("id"),
                     status="confirmed",
                     transport_to_next=transport
                 )
