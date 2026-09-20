@@ -37,13 +37,14 @@ class ReplannerAgent:
                         alt = self.places_tool.get_indoor_alternative(
                             trip.destination,
                             act.id,
-                            exclude_place_ids=list(current_ids)
+                            exclude_place_ids=list(current_ids),
+                            interests=trip.user_preferences.interests if trip.user_preferences else None
                         )
                         if alt:
                             orig_title = act.title
                             act.id = alt["id"]
                             act.title = alt["title"]
-                            act.category = alt["category"]
+                            act.category = alt.get("matched_interest") or alt["category"]
                             act.description = f"[Weather Replacement] {alt['description']}"
                             act.lat = alt["lat"]
                             act.lng = alt["lng"]
@@ -56,7 +57,7 @@ class ReplannerAgent:
                             current_ids.add(alt["id"])
                             
                             replaced_count += 1
-                            reasoning.append(f"Day {day.day_number}: Replaced outdoor '{orig_title}' with indoor alternative '{act.title}' ({alt['category']}).")
+                            reasoning.append(f"Day {day.day_number}: Replaced outdoor '{orig_title}' with indoor alternative '{act.title}' ({act.category}).")
                             
                             tools_called.append({"tool": "get_indoor_alternative", "replaced": orig_title, "with": act.title})
                             
@@ -73,12 +74,13 @@ class ReplannerAgent:
                         alt = self.places_tool.get_indoor_alternative(
                             trip.destination,
                             act.id,
-                            exclude_place_ids=list(current_ids)
+                            exclude_place_ids=list(current_ids),
+                            interests=trip.user_preferences.interests if trip.user_preferences else None
                         )
                         if alt:
                             act.id = alt["id"]
                             act.title = alt["title"]
-                            act.category = alt["category"]
+                            act.category = alt.get("matched_interest") or alt["category"]
                             act.description = f"[Closure Replacement] {alt['description']}"
                             act.lat = alt["lat"]
                             act.lng = alt["lng"]

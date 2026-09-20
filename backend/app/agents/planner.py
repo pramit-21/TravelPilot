@@ -13,7 +13,7 @@ class PlannerAgent:
 
     def generate_plan(self, prefs: UserPreferences) -> Tuple[TripItinerary, List[str], List[Dict[str, Any]]]:
         dest = prefs.destination
-        places = self.places_tool.search_places(dest)
+        places = self.places_tool.search_places(dest, interests=prefs.interests)
         weather = self.weather_tool.get_forecast(dest)
         
         reasoning = [
@@ -23,7 +23,7 @@ class PlannerAgent:
         ]
         
         tools_called = [
-            {"tool": "places_search", "params": {"destination": dest}, "result_count": len(places)},
+            {"tool": "places_search", "params": {"destination": dest, "interests": prefs.interests}, "result_count": len(places)},
             {"tool": "weather_forecast", "params": {"city": dest}, "result": weather["condition"]}
         ]
         
@@ -71,7 +71,7 @@ class PlannerAgent:
                 activity = Activity(
                     id=f"act_{day_num}_{slot+1}_{uuid.uuid4().hex[:4]}",
                     title=place_data["title"],
-                    category=place_data["category"],
+                    category=place_data.get("matched_interest") or place_data["category"],
                     description=place_data["description"],
                     start_time=start_times[slot],
                     end_time=end_times[slot],
