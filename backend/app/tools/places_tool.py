@@ -73,29 +73,60 @@ class PlacesTool:
 
         places = dest_data.get("places", [])
         
-        # If specific interests provided, match and prioritize places for those interests
+        # If specific interests provided, prioritize places matching those interests
         if interests:
             matched_places = []
+            other_places = []
             for place in places:
                 if is_indoor_only and not place.get("is_indoor", False):
                     continue
                 
                 matched_interest = self._match_place_interest(place, interests)
+                p_copy = dict(place)
                 if matched_interest:
-                    p_copy = dict(place)
                     p_copy["matched_interest"] = matched_interest
                     matched_places.append(p_copy)
+                else:
+                    other_places.append(p_copy)
             
-            if matched_places:
-                return matched_places
+            # Matched places first, then other available places for full 1-5 day itinerary depth
+            return matched_places + other_places
 
-        # Fallback if no matching places found or no interests specified
+        # Fallback if no interests specified
         filtered = []
         for place in places:
             if is_indoor_only and not place.get("is_indoor", False):
                 continue
             filtered.append(dict(place))
         return filtered
+
+    def get_places_for_day(
+        self,
+        destination: str,
+        day_number: int,
+        interests: Optional[List[str]] = None,
+        exclude_ids: Optional[set] = None
+    ) -> List[Dict[str, Any]]:
+        dest_data = self.get_destination_data(destination)
+        if not dest_data:
+            return []
+
+        places = dest_data.get("places", [])
+        exclude = exclude_ids or set()
+        
+        # Filter to target day places not already used
+        day_candidates = [dict(p) for p in places if p.get("day") == day_number and p.get("id") not in exclude]
+        
+        # Score candidates by user interests and ratings
+        def rank_key(p):
+            match = self._match_place_interest(p, interests) if interests else None
+            if match:
+                p["matched_interest"] = match
+                return (1, p.get("rating", 4.5))
+            return (0, p.get("rating", 4.5))
+            
+        day_candidates.sort(key=rank_key, reverse=True)
+        return day_candidates
 
     def get_indoor_alternative(
         self,

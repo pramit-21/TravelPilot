@@ -27,7 +27,8 @@
           "architecture",
           "history"
         ],
-        "image_url": "/kolkata-victoria.jpg"
+        "image_url": "/kolkata-victoria.jpg",
+        "day": 1
       },
       {
         "id": "kol_2",
@@ -47,7 +48,8 @@
           "mummies",
           "history"
         ],
-        "image_url": "/places/indian-museum.jpg"
+        "image_url": "/places/indian-museum.jpg",
+        "day": 1
       },
       {
         "id": "kol_3",
@@ -67,7 +69,8 @@
           "river",
           "walking"
         ],
-        "image_url": "/kolkata-howrah.jpg"
+        "image_url": "/kolkata-howrah.jpg",
+        "day": 3
       },
       {
         "id": "kol_4",
@@ -87,7 +90,8 @@
           "kids",
           "science"
         ],
-        "image_url": "/places/birla-planetarium.jpg"
+        "image_url": "/places/birla-planetarium.jpg",
+        "day": 5
       },
       {
         "id": "kol_5",
@@ -107,7 +111,8 @@
           "nightlife",
           "kebabs"
         ],
-        "image_url": "/places/park-street.jpg"
+        "image_url": "/places/park-street.jpg",
+        "day": 4
       },
       {
         "id": "kol_6",
@@ -127,7 +132,8 @@
           "river cruise",
           "architecture"
         ],
-        "image_url": "/places/dakshineswar.jpg"
+        "image_url": "/places/dakshineswar.jpg",
+        "day": 3
       },
       {
         "id": "kol_7",
@@ -147,7 +153,8 @@
           "interactive",
           "family"
         ],
-        "image_url": "/places/science-city.jpg"
+        "image_url": "/places/science-city.jpg",
+        "day": 5
       },
       {
         "id": "kol_8",
@@ -167,7 +174,8 @@
           "mansion",
           "heritage"
         ],
-        "image_url": "/places/marble-palace.jpg"
+        "image_url": "/places/marble-palace.jpg",
+        "day": 2
       },
       {
         "id": "kol_9",
@@ -187,7 +195,8 @@
           "boating",
           "outdoors"
         ],
-        "image_url": "/places/eco-park.jpg"
+        "image_url": "/places/eco-park.jpg",
+        "day": 5
       },
       {
         "id": "kol_10",
@@ -207,7 +216,8 @@
           "cinema",
           "culture"
         ],
-        "image_url": "/places/academy-fine-arts.jpg"
+        "image_url": "/places/academy-fine-arts.jpg",
+        "day": 2
       },
       {
         "id": "kol_11",
@@ -227,7 +237,8 @@
           "architecture",
           "quiet"
         ],
-        "image_url": "/places/st-pauls.jpg"
+        "image_url": "/places/st-pauls.jpg",
+        "day": 1
       },
       {
         "id": "kol_12",
@@ -247,7 +258,8 @@
           "sunset",
           "outdoors"
         ],
-        "image_url": "/places/princep-ghat.jpg"
+        "image_url": "/places/princep-ghat.jpg",
+        "day": 3
       },
       {
         "id": "kol_13",
@@ -267,7 +279,8 @@
           "museum",
           "literature"
         ],
-        "image_url": "/places/jorasanko-thakur-bari.jpg"
+        "image_url": "/places/jorasanko-thakur-bari.jpg",
+        "day": 2
       },
       {
         "id": "kol_14",
@@ -287,7 +300,8 @@
           "photography",
           "outdoors"
         ],
-        "image_url": "/places/south-park-cemetery.jpg"
+        "image_url": "/places/south-park-cemetery.jpg",
+        "day": 4
       },
       {
         "id": "kol_15",
@@ -307,7 +321,8 @@
           "intellectual",
           "culture"
         ],
-        "image_url": "/places/college-street.jpg"
+        "image_url": "/places/college-street.jpg",
+        "day": 2
       },
       {
         "id": "kol_16",
@@ -327,7 +342,8 @@
           "charity",
           "culture"
         ],
-        "image_url": "/places/mother-house.jpg"
+        "image_url": "/places/mother-house.jpg",
+        "day": 4
       },
       {
         "id": "kol_17",
@@ -347,7 +363,8 @@
           "outdoors",
           "family"
         ],
-        "image_url": "/places/alipore-zoo.jpg"
+        "image_url": "/places/alipore-zoo.jpg",
+        "day": 5
       },
       {
         "id": "kol_18",
@@ -367,7 +384,8 @@
           "history",
           "indoor"
         ],
-        "image_url": "/places/netaji-bhawan.jpg"
+        "image_url": "/places/netaji-bhawan.jpg",
+        "day": 4
       },
       {
         "id": "kol_19",
@@ -387,7 +405,8 @@
           "spiritual",
           "tradition"
         ],
-        "image_url": "/places/kalighat.jpg"
+        "image_url": "/places/kalighat.jpg",
+        "day": 3
       },
       {
         "id": "kol_20",
@@ -407,7 +426,8 @@
           "history",
           "museum"
         ],
-        "image_url": "/places/kolkata-town-hall.jpg"
+        "image_url": "/places/kolkata-town-hall.jpg",
+        "day": 1
       },
       {
         "id": "kol_21",
@@ -428,7 +448,8 @@
           "culture",
           "architecture"
         ],
-        "image_url": "/places/birla-mandir.jpg"
+        "image_url": "/places/birla-mandir.jpg",
+        "day": 5
       }
     ],
     "rag_context": [
@@ -467,7 +488,8 @@
           "outdoors",
           "romance"
         ],
-        "image_url": "/paris-eiffel.jpg"
+        "image_url": "/paris-eiffel.jpg",
+        "day": 1
       },
       {
         "id": "par_2",
@@ -487,7 +509,8 @@
           "indoor",
           "history"
         ],
-        "image_url": "/paris-louvre.jpg"
+        "image_url": "/paris-louvre.jpg",
+        "day": 2
       },
       {
         "id": "par_3",
@@ -507,7 +530,8 @@
           "museum",
           "indoor"
         ],
-        "image_url": "/places/musee-orsay.jpg"
+        "image_url": "/places/musee-orsay.jpg",
+        "day": 2
       },
       {
         "id": "par_4",
@@ -527,7 +551,8 @@
           "indoor",
           "architecture"
         ],
-        "image_url": "/places/sainte-chapelle.jpg"
+        "image_url": "/places/sainte-chapelle.jpg",
+        "day": 3
       },
       {
         "id": "par_5",
@@ -547,7 +572,8 @@
           "seine",
           "history"
         ],
-        "image_url": "/places/notre-dame.jpg"
+        "image_url": "/places/notre-dame.jpg",
+        "day": 3
       },
       {
         "id": "par_6",
@@ -567,7 +593,8 @@
           "views",
           "shopping"
         ],
-        "image_url": "/places/arc-de-triomphe.jpg"
+        "image_url": "/places/arc-de-triomphe.jpg",
+        "day": 1
       },
       {
         "id": "par_7",
@@ -587,7 +614,8 @@
           "artists",
           "panoramic"
         ],
-        "image_url": "/places/sacre-coeur.jpg"
+        "image_url": "/places/sacre-coeur.jpg",
+        "day": 4
       },
       {
         "id": "par_8",
@@ -607,7 +635,8 @@
           "indoor",
           "design"
         ],
-        "image_url": "/places/centre-pompidou.jpg"
+        "image_url": "/places/centre-pompidou.jpg",
+        "day": 5
       },
       {
         "id": "par_9",
@@ -627,7 +656,8 @@
           "interior",
           "luxury"
         ],
-        "image_url": "/places/palais-garnier.jpg"
+        "image_url": "/places/palais-garnier.jpg",
+        "day": 4
       },
       {
         "id": "par_10",
@@ -647,7 +677,8 @@
           "peaceful",
           "outdoors"
         ],
-        "image_url": "/places/luxembourg-gardens.jpg"
+        "image_url": "/places/luxembourg-gardens.jpg",
+        "day": 3
       },
       {
         "id": "par_11",
@@ -667,7 +698,8 @@
           "crypt",
           "architecture"
         ],
-        "image_url": "/places/pantheon.jpg"
+        "image_url": "/places/pantheon.jpg",
+        "day": 3
       },
       {
         "id": "par_12",
@@ -687,7 +719,8 @@
           "paintings",
           "indoor"
         ],
-        "image_url": "/places/musee-orangerie.jpg"
+        "image_url": "/places/musee-orangerie.jpg",
+        "day": 2
       },
       {
         "id": "par_13",
@@ -707,7 +740,8 @@
           "pastries",
           "dining"
         ],
-        "image_url": "/places/le-marais.jpg"
+        "image_url": "/places/le-marais.jpg",
+        "day": 5
       },
       {
         "id": "par_14",
@@ -727,7 +761,8 @@
           "seine",
           "sightseeing"
         ],
-        "image_url": "/places/seine-cruise.jpg"
+        "image_url": "/places/seine-cruise.jpg",
+        "day": 1
       },
       {
         "id": "par_15",
@@ -747,7 +782,8 @@
           "art",
           "garden"
         ],
-        "image_url": "/places/musee-rodin.jpg"
+        "image_url": "/places/musee-rodin.jpg",
+        "day": 4
       },
       {
         "id": "par_16",
@@ -767,7 +803,8 @@
           "outdoors",
           "scenery"
         ],
-        "image_url": "/places/tuileries-garden.jpg"
+        "image_url": "/places/tuileries-garden.jpg",
+        "day": 2
       },
       {
         "id": "par_17",
@@ -787,7 +824,8 @@
           "architecture",
           "views"
         ],
-        "image_url": "/places/galeries-lafayette.jpg"
+        "image_url": "/places/galeries-lafayette.jpg",
+        "day": 4
       },
       {
         "id": "par_18",
@@ -807,7 +845,8 @@
           "unique",
           "indoor"
         ],
-        "image_url": "/places/catacombs.jpg"
+        "image_url": "/places/catacombs.jpg",
+        "day": 5
       },
       {
         "id": "par_19",
@@ -827,7 +866,8 @@
           "indoor",
           "exhibition"
         ],
-        "image_url": "/places/grand-palais.jpg"
+        "image_url": "/places/grand-palais.jpg",
+        "day": 1
       },
       {
         "id": "par_20",
@@ -847,7 +887,8 @@
           "memorial",
           "outdoors"
         ],
-        "image_url": "/places/pere-lachaise.jpg"
+        "image_url": "/places/pere-lachaise.jpg",
+        "day": 5
       }
     ],
     "rag_context": [
@@ -886,7 +927,8 @@
           "street food",
           "history"
         ],
-        "image_url": "/tokyo-pagoda.jpg"
+        "image_url": "/tokyo-pagoda.jpg",
+        "day": 1
       },
       {
         "id": "tok_2",
@@ -906,7 +948,8 @@
           "interactive",
           "modern"
         ],
-        "image_url": "/places/teamlab.jpg"
+        "image_url": "/places/teamlab.jpg",
+        "day": 4
       },
       {
         "id": "tok_3",
@@ -926,7 +969,8 @@
           "forest",
           "peaceful"
         ],
-        "image_url": "/places/meiji-shrine.jpg"
+        "image_url": "/places/meiji-shrine.jpg",
+        "day": 2
       },
       {
         "id": "tok_4",
@@ -946,7 +990,8 @@
           "iconic",
           "cityscape"
         ],
-        "image_url": "/tokyo-shibuya.jpg"
+        "image_url": "/tokyo-shibuya.jpg",
+        "day": 2
       },
       {
         "id": "tok_5",
@@ -966,7 +1011,8 @@
           "modern",
           "indoor"
         ],
-        "image_url": "/places/tokyo-skytree.jpg"
+        "image_url": "/places/tokyo-skytree.jpg",
+        "day": 1
       },
       {
         "id": "tok_6",
@@ -986,7 +1032,8 @@
           "electronics",
           "indoor"
         ],
-        "image_url": "/places/akihabara.jpg"
+        "image_url": "/places/akihabara.jpg",
+        "day": 4
       },
       {
         "id": "tok_7",
@@ -1006,7 +1053,8 @@
           "cherry blossom",
           "peaceful"
         ],
-        "image_url": "/places/shinjuku-gyoen.jpg"
+        "image_url": "/places/shinjuku-gyoen.jpg",
+        "day": 5
       },
       {
         "id": "tok_8",
@@ -1026,7 +1074,8 @@
           "seafood",
           "market"
         ],
-        "image_url": "/places/tsukiji.jpg"
+        "image_url": "/places/tsukiji.jpg",
+        "day": 3
       },
       {
         "id": "tok_9",
@@ -1046,7 +1095,8 @@
           "roppongi",
           "indoor"
         ],
-        "image_url": "/places/roppongi-hills.jpg"
+        "image_url": "/places/roppongi-hills.jpg",
+        "day": 5
       },
       {
         "id": "tok_10",
@@ -1066,7 +1116,8 @@
           "culture",
           "museum"
         ],
-        "image_url": "/places/tokyo-national-museum.jpg"
+        "image_url": "/places/tokyo-national-museum.jpg",
+        "day": 3
       },
       {
         "id": "tok_11",
@@ -1086,7 +1137,8 @@
           "history",
           "gardens"
         ],
-        "image_url": "/places/imperial-palace.jpg"
+        "image_url": "/places/imperial-palace.jpg",
+        "day": 3
       },
       {
         "id": "tok_12",
@@ -1106,7 +1158,8 @@
           "waterfront",
           "entertainment"
         ],
-        "image_url": "/places/odaiba.jpg"
+        "image_url": "/places/odaiba.jpg",
+        "day": 4
       },
       {
         "id": "tok_13",
@@ -1126,7 +1179,8 @@
           "ginza",
           "culture"
         ],
-        "image_url": "/places/ginza.jpg"
+        "image_url": "/places/ginza.jpg",
+        "day": 3
       },
       {
         "id": "tok_14",
@@ -1146,7 +1200,8 @@
           "crepes",
           "youth"
         ],
-        "image_url": "/places/harajuku.jpg"
+        "image_url": "/places/harajuku.jpg",
+        "day": 2
       },
       {
         "id": "tok_15",
@@ -1166,7 +1221,8 @@
           "views",
           "landmark"
         ],
-        "image_url": "/places/tokyo-tower.jpg"
+        "image_url": "/places/tokyo-tower.jpg",
+        "day": 2
       },
       {
         "id": "tok_16",
@@ -1186,7 +1242,8 @@
           "walking",
           "traditional"
         ],
-        "image_url": "/places/yanaka-ginza.jpg"
+        "image_url": "/places/yanaka-ginza.jpg",
+        "day": 1
       },
       {
         "id": "tok_17",
@@ -1206,7 +1263,8 @@
           "future",
           "indoor"
         ],
-        "image_url": "/places/miraikan.jpg"
+        "image_url": "/places/miraikan.jpg",
+        "day": 4
       },
       {
         "id": "tok_18",
@@ -1226,7 +1284,8 @@
           "nightlife",
           "atmosphere"
         ],
-        "image_url": "/places/omoide-yokocho.jpg"
+        "image_url": "/places/omoide-yokocho.jpg",
+        "day": 5
       },
       {
         "id": "tok_19",
@@ -1246,7 +1305,8 @@
           "nature",
           "peaceful"
         ],
-        "image_url": "/places/nezu-shrine.jpg"
+        "image_url": "/places/nezu-shrine.jpg",
+        "day": 1
       },
       {
         "id": "tok_20",
@@ -1266,7 +1326,8 @@
           "history",
           "museum"
         ],
-        "image_url": "/places/edo-tokyo-museum.jpg"
+        "image_url": "/places/edo-tokyo-museum.jpg",
+        "day": 5
       }
     ],
     "rag_context": [
