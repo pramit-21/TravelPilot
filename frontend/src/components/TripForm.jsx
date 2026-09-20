@@ -19,6 +19,11 @@ export default function TripForm({ onSubmit, loading }) {
       subtitle: 'City of Joy & Heritage',
       currency: '₹',
       defaultBudget: 20000,
+      budgetSuggestions: [
+        { label: 'Budget', amount: 10000 },
+        { label: 'Standard', amount: 20000 },
+        { label: 'Luxury', amount: 35000 }
+      ],
       coords: { lat: 22.5540, lng: 88.3512 },
       hotel: 'Park Street Grand Hotel',
       image: '/kolkata.jpg'
@@ -30,6 +35,11 @@ export default function TripForm({ onSubmit, loading }) {
       subtitle: 'Art, Architecture & Cuisine',
       currency: '€',
       defaultBudget: 2200,
+      budgetSuggestions: [
+        { label: 'Budget', amount: 1200 },
+        { label: 'Standard', amount: 2200 },
+        { label: 'Luxury', amount: 3800 }
+      ],
       coords: { lat: 48.8566, lng: 2.3522 },
       hotel: 'Le Marais Boutique Hotel',
       image: '/paris.jpg'
@@ -41,16 +51,47 @@ export default function TripForm({ onSubmit, loading }) {
       subtitle: 'Tradition Meets High-Tech',
       currency: '¥',
       defaultBudget: 180000,
+      budgetSuggestions: [
+        { label: 'Budget', amount: 100000 },
+        { label: 'Standard', amount: 180000 },
+        { label: 'Luxury', amount: 300000 }
+      ],
       coords: { lat: 35.6895, lng: 139.6917 },
       hotel: 'Shinjuku Central Hotel',
       image: '/tokyo.jpg'
     }
   ];
 
+  const getSuggestions = (city) => {
+    if (!city || !city.budgetSuggestions) return [];
+    if (!durationDays || Number(durationDays) === 3) {
+      return city.budgetSuggestions;
+    }
+    const ratio = Number(durationDays) / 3;
+    return city.budgetSuggestions.map((s) => {
+      const scaled = s.amount * ratio;
+      let cleanAmount;
+      if (scaled >= 10000) {
+        cleanAmount = Math.round(scaled / 1000) * 1000;
+      } else if (scaled >= 1000) {
+        cleanAmount = Math.round(scaled / 100) * 100;
+      } else {
+        cleanAmount = Math.round(scaled / 10) * 10;
+      }
+      return {
+        ...s,
+        amount: cleanAmount
+      };
+    });
+  };
+
   const handleSelectCity = (city) => {
     const prevCity = destinations.find((d) => d.id === destination);
-    if (!budget || (prevCity && Number(budget) === prevCity.defaultBudget)) {
-      setBudget(city.defaultBudget);
+    const prevSuggestions = prevCity ? getSuggestions(prevCity).map((s) => s.amount) : [];
+    if (!budget || (prevCity && (Number(budget) === prevCity.defaultBudget || prevSuggestions.includes(Number(budget))))) {
+      const currentCitySuggestions = getSuggestions(city);
+      const defaultSuggested = currentCitySuggestions.find((s) => s.label === 'Standard') || currentCitySuggestions[1];
+      setBudget(defaultSuggested ? defaultSuggested.amount : city.defaultBudget);
     }
     setDestination(city.id);
     if (formError) setFormError('');
@@ -203,7 +244,7 @@ export default function TripForm({ onSubmit, loading }) {
           </div>
 
           {/* Duration & Budget Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-sky-600" /> Trip Duration
@@ -246,6 +287,47 @@ export default function TripForm({ onSubmit, loading }) {
                   className={`w-full bg-white border border-slate-300 rounded-xl ${selectedCity ? 'pl-9' : 'pl-4'} pr-4 py-2.5 text-slate-900 text-sm font-bold focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-500/20 transition shadow-xs`}
                 />
               </div>
+
+              {selectedCity ? (
+                <div className="mt-2">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                      Suggested Budgets {durationDays ? `(${durationDays} ${Number(durationDays) === 1 ? 'day' : 'days'})` : ''}:
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-1.5">
+                    {getSuggestions(selectedCity).map((tier) => {
+                      const isSelected = Number(budget) === tier.amount;
+                      return (
+                        <button
+                          key={tier.label}
+                          type="button"
+                          onClick={() => {
+                            setBudget(tier.amount);
+                            if (formError) setFormError('');
+                          }}
+                          className={`py-1.5 px-1.5 rounded-xl text-center border transition-all cursor-pointer ${
+                            isSelected
+                              ? 'bg-emerald-50 border-emerald-500 text-emerald-800 shadow-xs ring-1 ring-emerald-500/30'
+                              : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700 hover:border-slate-300'
+                          }`}
+                        >
+                          <div className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">
+                            {tier.label}
+                          </div>
+                          <div className="text-xs font-extrabold text-slate-900 mt-0.5 truncate">
+                            {selectedCity.currency}{tier.amount.toLocaleString()}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : (
+                <p className="text-[11px] text-slate-400 mt-2 font-medium">
+                  Select a destination to view suggested budget amounts.
+                </p>
+              )}
             </div>
           </div>
 
