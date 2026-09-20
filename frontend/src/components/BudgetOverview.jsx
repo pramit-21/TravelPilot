@@ -75,26 +75,37 @@ export default function BudgetOverview({ trip }) {
 
   const categories = {};
 
-  selectedInterests.forEach((interest) => {
-    categories[interest] = 0;
-  });
-
-  let transitCost = 0;
-
-  trip.days?.forEach((day) => {
-    day.activities?.forEach((act) => {
-      const actCost = act.cost || 0;
-      const tCost = act.transport_to_next ? (act.transport_to_next.cost || 0) : 0;
-      transitCost += tCost;
-
-      const matched = matchActivityToSelectedInterest(act, selectedInterests);
-      const catName = matched || normalizeInterest(act.category) || act.category || 'Sightseeing';
-      categories[catName] = (categories[catName] || 0) + actCost;
+  if (selectedInterests.length > 0) {
+    // Restrict strictly to only the options selected in the form
+    selectedInterests.forEach((interest) => {
+      categories[interest] = 0;
     });
-  });
 
-  if (transitCost > 0) {
-    categories['Transit & Logistics'] = (categories['Transit & Logistics'] || 0) + Math.round(transitCost);
+    let actIndex = 0;
+    trip.days?.forEach((day) => {
+      day.activities?.forEach((act) => {
+        const cost = (act.cost || 0) + (act.transport_to_next ? (act.transport_to_next.cost || 0) : 0);
+        const matchedInterest = matchActivityToSelectedInterest(act, selectedInterests);
+
+        if (matchedInterest && categories.hasOwnProperty(matchedInterest)) {
+          categories[matchedInterest] += cost;
+        } else {
+          // Fallback allocation into user's selected interests
+          const fallbackKey = selectedInterests[actIndex % selectedInterests.length];
+          categories[fallbackKey] += cost;
+        }
+        actIndex++;
+      });
+    });
+  } else {
+    // Fallback if no specific interests were selected in the form
+    trip.days?.forEach((day) => {
+      day.activities?.forEach((act) => {
+        const cat = act.category || 'Sightseeing';
+        const cost = (act.cost || 0) + (act.transport_to_next ? (act.transport_to_next.cost || 0) : 0);
+        categories[cat] = (categories[cat] || 0) + cost;
+      });
+    });
   }
 
   const chartData = Object.keys(categories).map((cat) => ({
