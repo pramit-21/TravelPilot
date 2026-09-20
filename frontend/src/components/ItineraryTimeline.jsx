@@ -47,7 +47,7 @@ export default function ItineraryTimeline({ trip }) {
         {currentDay.activities.map((act, index) => {
           const isReplaced = act.status === 'replaced';
           const isCancelled = act.status === 'cancelled';
-          const photoUrl = getActivityPhoto(act.title, trip.destination);
+          const photoUrl = act.image_url || getActivityPhoto(act.title, trip.destination);
 
           return (
             <div key={act.id || index} className="relative pl-12">

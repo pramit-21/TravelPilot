@@ -15,6 +15,12 @@ export const DESTINATION_MEDIA = {
         desc: 'Magnificent white marble monument surrounded by reflecting pools and lush landscaped gardens.'
       },
       {
+        url: '/places/academy-fine-arts.jpg',
+        title: 'Academy of Fine Arts & Nandan',
+        category: 'Art & Culture',
+        desc: 'Historic cultural epicenter featuring contemporary fine art galleries, theatrical halls, and iconic cultural cinema.'
+      },
+      {
         url: '/kolkata-howrah.jpg',
         title: 'Howrah Bridge & Mullick Ghat',
         category: 'Iconic Landmark',
@@ -124,6 +130,7 @@ export function getActivityPhoto(title = '', destination = '') {
   if (t.includes('victoria')) return '/kolkata-victoria.jpg';
   if (t.includes('howrah') || t.includes('flower')) return '/kolkata-howrah.jpg';
   if (t.includes('indian museum') || (t.includes('museum') && d.includes('kolkata'))) return '/places/indian-museum.jpg';
+  if (t.includes('academy') || t.includes('fine arts') || t.includes('nandan')) return '/places/academy-fine-arts.jpg';
   if (t.includes('park street') || t.includes('peter cat') || t.includes('culinary')) return '/places/park-street.jpg';
   if (t.includes('dakshineswar') || t.includes('belur')) return '/places/dakshineswar.jpg';
   if (t.includes('princep') || t.includes('ghat')) return '/places/princep-ghat.jpg';

@@ -83,7 +83,7 @@ export default function InteractiveMap({ trip }) {
               <Popup>
                 <div className="p-1 max-w-[190px]">
                   <img
-                    src={getActivityPhoto(act.title, trip.destination)}
+                    src={act.image_url || getActivityPhoto(act.title, trip.destination)}
                     alt={act.title}
                     className="w-full h-20 object-cover rounded-lg mb-1.5 shadow-2xs"
                   />
