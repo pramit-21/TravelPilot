@@ -2,6 +2,7 @@ import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import L from 'leaflet';
 import { MapPin } from 'lucide-react';
+import { getActivityPhoto } from './DestinationHeroHeader';
 
 // Marker icons
 const defaultIcon = L.icon({
@@ -60,7 +61,12 @@ export default function InteractiveMap({ trip }) {
           {/* Hotel Base Marker */}
           <Marker position={[hotelLat, hotelLng]} icon={hotelIcon}>
             <Popup>
-              <div className="p-1">
+              <div className="p-1 max-w-[190px]">
+                <img
+                  src={getActivityPhoto(trip.user_preferences.hotel_name, trip.destination)}
+                  alt={trip.user_preferences.hotel_name}
+                  className="w-full h-20 object-cover rounded-lg mb-1.5 shadow-2xs"
+                />
                 <div className="font-bold text-xs text-amber-700">{trip.user_preferences.hotel_name}</div>
                 <div className="text-[11px] text-slate-500 mt-0.5">Accommodation HQ</div>
               </div>
@@ -75,8 +81,13 @@ export default function InteractiveMap({ trip }) {
               icon={act.status === 'replaced' ? activeIcon : defaultIcon}
             >
               <Popup>
-                <div className="p-1">
-                  <div className="font-bold text-xs text-sky-700">{act.title}</div>
+                <div className="p-1 max-w-[190px]">
+                  <img
+                    src={getActivityPhoto(act.title, trip.destination)}
+                    alt={act.title}
+                    className="w-full h-20 object-cover rounded-lg mb-1.5 shadow-2xs"
+                  />
+                  <div className="font-bold text-xs text-sky-700 leading-tight">{act.title}</div>
                   <div className="text-[11px] text-slate-600 mt-0.5">
                     {act.category} • <span className="text-slate-400">{act.start_time}</span>
                   </div>

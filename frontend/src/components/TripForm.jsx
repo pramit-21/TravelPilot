@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Calendar, DollarSign, Sparkles, Navigation, Check } from 'lucide-react';
 
-export default function TripForm({ onSubmit, loading }) {
+export default function TripForm({ onSubmit, loading, onDestinationChange }) {
   const [destination, setDestination] = useState('');
   const [durationDays, setDurationDays] = useState('');
   const [budget, setBudget] = useState('');
@@ -94,6 +94,7 @@ export default function TripForm({ onSubmit, loading }) {
       setBudget(defaultSuggested ? defaultSuggested.amount : city.defaultBudget);
     }
     setDestination(city.id);
+    if (onDestinationChange) onDestinationChange(city.id);
     if (formError) setFormError('');
   };
 

@@ -117,18 +117,50 @@ export function getDestinationInfo(destinationName) {
 }
 
 export function getActivityPhoto(title = '', destination = '') {
-  const t = title.toLowerCase();
-  const d = destination.toLowerCase();
+  const t = (title || '').toLowerCase();
+  const d = (destination || '').toLowerCase();
 
+  // 1. Kolkata Specific Landmark Locations
   if (t.includes('victoria')) return '/kolkata-victoria.jpg';
   if (t.includes('howrah') || t.includes('flower')) return '/kolkata-howrah.jpg';
+  if (t.includes('indian museum') || (t.includes('museum') && d.includes('kolkata'))) return '/places/indian-museum.jpg';
+  if (t.includes('park street') || t.includes('peter cat') || t.includes('culinary')) return '/places/park-street.jpg';
+  if (t.includes('dakshineswar') || t.includes('belur')) return '/places/dakshineswar.jpg';
+  if (t.includes('princep') || t.includes('ghat')) return '/places/princep-ghat.jpg';
+  if (t.includes('paul') || t.includes('cathedral')) return '/places/st-pauls.jpg';
+  if (t.includes('eco') || t.includes('park')) return '/places/eco-park.jpg';
+  if (t.includes('kalighat')) return '/places/kalighat.jpg';
+  if (t.includes('college street') || t.includes('coffee house')) return '/places/college-street.jpg';
+
+  // 2. Paris Specific Landmark Locations
   if (t.includes('eiffel')) return '/paris-eiffel.jpg';
   if (t.includes('louvre')) return '/paris-louvre.jpg';
-  if (t.includes('shibuya')) return '/tokyo-shibuya.jpg';
-  if (t.includes('senso') || t.includes('pagoda') || t.includes('temple')) {
-    if (d.includes('tokyo')) return '/tokyo-pagoda.jpg';
-  }
+  if (t.includes('arc de triomphe') || t.includes('champs')) return '/places/arc-de-triomphe.jpg';
+  if (t.includes('sacre') || t.includes('sacré') || t.includes('montmartre')) return '/places/sacre-coeur.jpg';
+  if (t.includes('notre-dame') || t.includes('notre dame')) return '/places/notre-dame.jpg';
+  if (t.includes('orsay')) return '/places/musee-orsay.jpg';
+  if (t.includes('sainte-chapelle') || t.includes('chapelle')) return '/places/sainte-chapelle.jpg';
+  if (t.includes('garnier') || t.includes('opera')) return '/places/palais-garnier.jpg';
+  if (t.includes('luxembourg')) return '/places/luxembourg-gardens.jpg';
+  if (t.includes('seine') || t.includes('cruise')) return '/places/seine-cruise.jpg';
+  if (t.includes('catacomb')) return '/places/catacombs.jpg';
 
+  // 3. Tokyo Specific Landmark Locations
+  if (t.includes('senso') || t.includes('pagoda')) return '/tokyo-pagoda.jpg';
+  if (t.includes('shibuya') || t.includes('hachiko')) return '/tokyo-shibuya.jpg';
+  if (t.includes('skytree')) return '/places/tokyo-skytree.jpg';
+  if (t.includes('tokyo tower') || t.includes('zojo')) return '/places/tokyo-tower.jpg';
+  if (t.includes('meiji') || t.includes('yoyogi')) return '/places/meiji-shrine.jpg';
+  if (t.includes('akihabara')) return '/places/akihabara.jpg';
+  if (t.includes('shinjuku gyoen')) return '/places/shinjuku-gyoen.jpg';
+  if (t.includes('tsukiji')) return '/places/tsukiji.jpg';
+  if (t.includes('teamlab')) return '/places/teamlab.jpg';
+  if (t.includes('roppongi') || t.includes('mori')) return '/places/roppongi-hills.jpg';
+  if (t.includes('ginza')) return '/places/ginza.jpg';
+  if (t.includes('harajuku') || t.includes('takeshita')) return '/places/harajuku.jpg';
+  if (t.includes('odaiba') || t.includes('gundam')) return '/places/odaiba.jpg';
+
+  // City Destination-level fallbacks
   if (d.includes('kolkata')) return '/kolkata.jpg';
   if (d.includes('paris')) return '/paris.jpg';
   if (d.includes('tokyo')) return '/tokyo.jpg';

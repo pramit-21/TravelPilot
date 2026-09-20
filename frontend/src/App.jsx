@@ -21,6 +21,16 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [activeBg, setActiveBg] = useState(null);
   const [bgTheme, setBgTheme] = useState('cinematic'); // 'cinematic' | 'daylight'
+  const [selectedLocation, setSelectedLocation] = useState(null);
+
+  const getLandingWallpaper = () => {
+    if (!selectedLocation) return '/hero-travel.jpg';
+    const loc = selectedLocation.toLowerCase();
+    if (loc.includes('kolkata')) return '/kolkata.jpg';
+    if (loc.includes('paris')) return '/paris-eiffel.jpg';
+    if (loc.includes('tokyo')) return '/tokyo-pagoda.jpg';
+    return '/hero-travel.jpg';
+  };
 
   const handleCreateTrip = async (prefs) => {
     setLoading(true);
@@ -113,6 +123,7 @@ export default function App() {
           setAgentResponse(null);
           setErrorMessage(null);
           setActiveBg(null);
+          setSelectedLocation(null);
         }}
       />
 
@@ -121,8 +132,8 @@ export default function App() {
         <div className="flex-1 relative flex flex-col justify-center overflow-hidden min-h-[calc(100vh-65px)]">
           {/* Background Photo */}
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-transform duration-1000"
-            style={{ backgroundImage: `url('/hero-travel.jpg')` }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 transition-all duration-1000"
+            style={{ backgroundImage: `url('${getLandingWallpaper()}')` }}
           />
 
           {/* Deep Cinematic Gradient Overlay for Contrast & Readability */}
@@ -145,7 +156,11 @@ export default function App() {
               </div>
             )}
 
-            <TripForm onSubmit={handleCreateTrip} loading={loading} />
+            <TripForm
+              onSubmit={handleCreateTrip}
+              loading={loading}
+              onDestinationChange={setSelectedLocation}
+            />
           </div>
         </div>
       ) : (
