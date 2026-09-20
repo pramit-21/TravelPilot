@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Launch in Edge (TravelPilot)",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/frontend",
+            "preLaunchTask": "Start Full Stack"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch in Chrome (TravelPilot)",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/frontend",
+            "preLaunchTask": "Start Full Stack"
+        }
+    ]
+}
