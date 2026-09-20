@@ -103,6 +103,12 @@ export const DESTINATION_MEDIA = {
     defaultBg: '/tokyo-pagoda.jpg',
     gallery: [
       {
+        url: '/places/roppongi-hills.jpg',
+        title: 'Roppongi Hills & Mori Art Museum',
+        category: 'Contemporary Art',
+        desc: 'Cutting-edge contemporary art exhibitions perched high on the 53rd floor of Roppongi Hills Mori Tower.'
+      },
+      {
         url: '/places/shinjuku-gyoen.jpg',
         title: 'Shinjuku Gyoen National Garden',
         category: 'Imperial Oasis',
