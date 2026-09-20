@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { MapPin, Calendar, DollarSign, Sparkles, Navigation, Check } from 'lucide-react';
 
 export default function TripForm({ onSubmit, loading }) {
-  const [destination, setDestination] = useState('Kolkata');
-  const [durationDays, setDurationDays] = useState(3);
-  const [budget, setBudget] = useState(20000);
-  const [travelStyle, setTravelStyle] = useState('Balanced');
-  const [interests, setInterests] = useState(['History', 'Food', 'Culture']);
+  const [destination, setDestination] = useState('');
+  const [durationDays, setDurationDays] = useState('');
+  const [budget, setBudget] = useState('');
+  const [travelStyle, setTravelStyle] = useState('');
+  const [interests, setInterests] = useState([]);
+  const [formError, setFormError] = useState('');
 
   const allInterests = ['History', 'Food', 'Culture', 'Museums', 'Nature', 'Landmarks', 'Art'];
 
@@ -47,11 +48,16 @@ export default function TripForm({ onSubmit, loading }) {
   ];
 
   const handleSelectCity = (city) => {
+    const prevCity = destinations.find((d) => d.id === destination);
+    if (!budget || (prevCity && Number(budget) === prevCity.defaultBudget)) {
+      setBudget(city.defaultBudget);
+    }
     setDestination(city.id);
-    setBudget(city.defaultBudget);
+    if (formError) setFormError('');
   };
 
   const toggleInterest = (tag) => {
+    if (formError) setFormError('');
     if (interests.includes(tag)) {
       setInterests(interests.filter((i) => i !== tag));
     } else {
@@ -61,7 +67,31 @@ export default function TripForm({ onSubmit, loading }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const city = destinations.find((d) => d.id === destination) || destinations[0];
+    if (!destination) {
+      setFormError('Please select a destination.');
+      return;
+    }
+    if (!durationDays) {
+      setFormError('Please select your trip duration.');
+      return;
+    }
+    if (!budget || Number(budget) <= 0) {
+      setFormError('Please specify a target budget.');
+      return;
+    }
+    if (interests.length === 0) {
+      setFormError('Please select at least one travel focus or interest.');
+      return;
+    }
+    if (!travelStyle) {
+      setFormError('Please select your preferred travel pace.');
+      return;
+    }
+
+    setFormError('');
+    const city = destinations.find((d) => d.id === destination);
+    if (!city) return;
+
     onSubmit({
       destination: city.id,
       duration_days: Number(durationDays),
@@ -76,7 +106,7 @@ export default function TripForm({ onSubmit, loading }) {
     });
   };
 
-  const selectedCity = destinations.find((d) => d.id === destination) || destinations[0];
+  const selectedCity = destinations.find((d) => d.id === destination) || null;
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -180,9 +210,13 @@ export default function TripForm({ onSubmit, loading }) {
               </label>
               <select
                 value={durationDays}
-                onChange={(e) => setDurationDays(e.target.value)}
+                onChange={(e) => {
+                  setDurationDays(e.target.value);
+                  if (formError) setFormError('');
+                }}
                 className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-slate-900 text-sm focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-500/20 transition cursor-pointer shadow-xs"
               >
+                <option value="" disabled>Select trip duration...</option>
                 {[1, 2, 3, 4, 5].map((d) => (
                   <option key={d} value={d}>
                     {d} {d === 1 ? 'Day (Express Tour)' : 'Days (Full Itinerary)'}
@@ -193,17 +227,23 @@ export default function TripForm({ onSubmit, loading }) {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                <DollarSign className="w-3.5 h-3.5 text-emerald-600" /> Target Budget ({selectedCity.currency})
+                <DollarSign className="w-3.5 h-3.5 text-emerald-600" /> Target Budget {selectedCity ? `(${selectedCity.currency})` : ''}
               </label>
               <div className="relative">
-                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 font-bold text-sm">
-                  {selectedCity.currency}
-                </span>
+                {selectedCity && (
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 font-bold text-sm">
+                    {selectedCity.currency}
+                  </span>
+                )}
                 <input
                   type="number"
                   value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  className="w-full bg-white border border-slate-300 rounded-xl pl-9 pr-4 py-2.5 text-slate-900 text-sm font-bold focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-500/20 transition shadow-xs"
+                  onChange={(e) => {
+                    setBudget(e.target.value);
+                    if (formError) setFormError('');
+                  }}
+                  placeholder={selectedCity ? `e.g. ${selectedCity.defaultBudget}` : 'Select destination first or enter budget'}
+                  className={`w-full bg-white border border-slate-300 rounded-xl ${selectedCity ? 'pl-9' : 'pl-4'} pr-4 py-2.5 text-slate-900 text-sm font-bold focus:outline-none focus:border-sky-600 focus:ring-2 focus:ring-sky-500/20 transition shadow-xs`}
                 />
               </div>
             </div>
@@ -246,7 +286,10 @@ export default function TripForm({ onSubmit, loading }) {
                 <button
                   key={style}
                   type="button"
-                  onClick={() => setTravelStyle(style)}
+                  onClick={() => {
+                    setTravelStyle(style);
+                    if (formError) setFormError('');
+                  }}
                   className={`py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     travelStyle === style
                       ? 'bg-white text-sky-700 shadow-sm border border-slate-200'
@@ -258,6 +301,14 @@ export default function TripForm({ onSubmit, loading }) {
               ))}
             </div>
           </div>
+
+          {/* Validation Notice */}
+          {formError && (
+            <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold flex items-center gap-2 animate-in fade-in">
+              <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+              <span>{formError}</span>
+            </div>
+          )}
 
           {/* Submit Button */}
           <button
