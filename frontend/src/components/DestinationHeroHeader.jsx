@@ -103,6 +103,24 @@ export const DESTINATION_MEDIA = {
     defaultBg: '/tokyo-pagoda.jpg',
     gallery: [
       {
+        url: '/places/shinjuku-gyoen.jpg',
+        title: 'Shinjuku Gyoen National Garden',
+        category: 'Imperial Oasis',
+        desc: 'Serene reflecting ponds, wooden footbridges, and sculpted traditional Japanese gardens framed by the Shinjuku skyline.'
+      },
+      {
+        url: '/places/akihabara.jpg',
+        title: 'Akihabara Electric Town & Retro Games',
+        category: 'Arcades & Otaku Culture',
+        desc: 'Nostalgic multi-tier retro arcade candy cabinets, fighting games, and vibrant electric subculture alleys.'
+      },
+      {
+        url: '/places/teamlab.jpg',
+        title: 'teamLab Planets',
+        category: 'Immersive Digital Art',
+        desc: 'Surreal mirror garden of living suspended orchids reflecting endlessly across waters and light.'
+      },
+      {
         url: '/places/odaiba.jpg',
         title: 'Odaiba Waterfront & Gundam Statue',
         category: 'Futuristic Bay & Sci-Fi',
@@ -224,10 +242,10 @@ export function getActivityPhoto(title = '', destination = '') {
   if (t.includes('skytree') || t.includes('sky tree')) return '/places/tokyo-skytree.jpg';
   if (t.includes('tokyo tower') || t.includes('zojo') || t.includes('zōjō')) return '/places/tokyo-tower.jpg';
   if (t.includes('meiji') || t.includes('jingu') || t.includes('yoyogi')) return '/places/meiji-shrine.jpg';
-  if (t.includes('akihabara')) return '/places/akihabara.jpg';
-  if (t.includes('shinjuku gyoen')) return '/places/shinjuku-gyoen.jpg';
+  if (t.includes('akihabara') || t.includes('electric town') || t.includes('retro game')) return '/places/akihabara.jpg';
+  if (t.includes('shinjuku gyoen') || t.includes('gyoen')) return '/places/shinjuku-gyoen.jpg';
   if (t.includes('tsukiji')) return '/places/tsukiji.jpg';
-  if (t.includes('teamlab')) return '/places/teamlab.jpg';
+  if (t.includes('teamlab') || t.includes('planets')) return '/places/teamlab.jpg';
   if (t.includes('roppongi') || t.includes('mori')) return '/places/roppongi-hills.jpg';
   if (t.includes('kabuki') || (t.includes('ginza') && !t.includes('yanaka'))) return '/places/ginza.jpg';
   if (t.includes('harajuku') || t.includes('takeshita')) return '/places/harajuku.jpg';
